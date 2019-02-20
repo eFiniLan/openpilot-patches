@@ -1,15 +1,14 @@
- launch_openpilot.sh | 2 ++
- 1 file changed, 2 insertions(+)
+ launch_openpilot.sh | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/launch_openpilot.sh b/launch_openpilot.sh
-index 1525e171..fdd46d84 100755
+index 1525e171..8b077e4d 100755
 --- a/launch_openpilot.sh
 +++ b/launch_openpilot.sh
-@@ -1,5 +1,7 @@
+@@ -1,5 +1,6 @@
  #!/usr/bin/bash
  
  export PASSIVE="0"
-+export NOLOG="1"
-+export NOUPLOAD="1"
++export LEAN="1"
  exec ./launch_chffrplus.sh
  
