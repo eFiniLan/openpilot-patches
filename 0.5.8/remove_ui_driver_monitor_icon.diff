@@ -1,0 +1,16 @@
+ selfdrive/ui/ui.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/selfdrive/ui/ui.c b/selfdrive/ui/ui.c
+index 33e35d38..cef75573 100644
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
+@@ -1308,7 +1308,7 @@ static void ui_draw_vision_footer(UIState *s) {
+   nvgBeginPath(s->vg);
+   nvgRect(s->vg, ui_viz_rx, footer_y, ui_viz_rw, footer_h);
+ 
+-  ui_draw_vision_face(s);
++//  ui_draw_vision_face(s);
+   ui_draw_vision_map(s);
+ }
+ 
