@@ -1,25 +1,15 @@
- selfdrive/manager.py | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ launch_openpilot.sh | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/selfdrive/manager.py b/selfdrive/manager.py
-index 70472887..362d99e1 100755
---- a/selfdrive/manager.py
-+++ b/selfdrive/manager.py
-@@ -87,14 +87,14 @@ from selfdrive.loggerd.config import ROOT
- # comment out anything you don't want to run
- managed_processes = {
-   "thermald": "selfdrive.thermald",
--  "uploader": "selfdrive.loggerd.uploader",
-+  # "uploader": "selfdrive.loggerd.uploader",
-   "controlsd": "selfdrive.controls.controlsd",
-   "radard": "selfdrive.controls.radard",
-   "ubloxd": "selfdrive.locationd.ubloxd",
-   "mapd": "selfdrive.mapd.mapd",
--  "loggerd": ("selfdrive/loggerd", ["./loggerd"]),
-+  # "loggerd": ("selfdrive/loggerd", ["./loggerd"]),
-   "logmessaged": "selfdrive.logmessaged",
--  "tombstoned": "selfdrive.tombstoned",
-+  # "tombstoned": "selfdrive.tombstoned",
-   "logcatd": ("selfdrive/logcatd", ["./logcatd"]),
-   "proclogd": ("selfdrive/proclogd", ["./proclogd"]),
-   "boardd": ("selfdrive/boardd", ["./boardd"]),   # not used directly
+diff --git a/launch_openpilot.sh b/launch_openpilot.sh
+index 1525e171..fdd46d84 100755
+--- a/launch_openpilot.sh
++++ b/launch_openpilot.sh
+@@ -1,5 +1,7 @@
+ #!/usr/bin/bash
+ 
+ export PASSIVE="0"
++export NOLOG="1"
++export NOUPLOAD="1"
+ exec ./launch_chffrplus.sh
+ 
