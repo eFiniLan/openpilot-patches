@@ -8,30 +8,40 @@ usage
 ======
 
 1. go to your openpilot folder
-    ```shell
+    ```bash
     cd /data/openpilot
     ```
 
 2. find your openpilot version, you will see something like this: **#define COMMA_VERSION "0.5.8-release** and your version will be **0.5.8**
-    ```shell
+    ```bash
     cat selfdrive/common/version.h | grep COMMA_VERSION
     ```
 
 3. download and apply patch, repeat this step if you want to apply more patches, example format:
-    ```shell
+    ```bash
     curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/<version>/<patch file> | git apply -v
     ```
     real example:
-    ```shell
+    ```bash
     curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.8/shut_down_eon_after_90_mins_if_usb_disconnected.diff | git apply -v
     ```
+4. If successful, you should see messages like this:
+    ```bash
+    Checking patch selfdrive/thermald.py...
+    Applied patch selfdrive/thermald.py cleanly.
+    ```
 
-4. make openpilot compile, making sure no errors
-    ```shell
+5. Now make openpilot compile, this is to avoid soft brick openpilot.
+    ```bash
     make
     ```
 
-5. now you can safely reboot your EON
-    ```shell
+6. If something went wrong, reset your branch and restart again:
+    ```bash
+    git reset --hard
+    ```
+
+7. now you can safely reboot your EON
+    ```bash
     reboot
     ```
