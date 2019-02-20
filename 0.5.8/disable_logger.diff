@@ -1,0 +1,25 @@
+ selfdrive/manager.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/selfdrive/manager.py b/selfdrive/manager.py
+index 70472887..362d99e1 100755
+--- a/selfdrive/manager.py
++++ b/selfdrive/manager.py
+@@ -87,14 +87,14 @@ from selfdrive.loggerd.config import ROOT
+ # comment out anything you don't want to run
+ managed_processes = {
+   "thermald": "selfdrive.thermald",
+-  "uploader": "selfdrive.loggerd.uploader",
++  # "uploader": "selfdrive.loggerd.uploader",
+   "controlsd": "selfdrive.controls.controlsd",
+   "radard": "selfdrive.controls.radard",
+   "ubloxd": "selfdrive.locationd.ubloxd",
+   "mapd": "selfdrive.mapd.mapd",
+-  "loggerd": ("selfdrive/loggerd", ["./loggerd"]),
++  # "loggerd": ("selfdrive/loggerd", ["./loggerd"]),
+   "logmessaged": "selfdrive.logmessaged",
+-  "tombstoned": "selfdrive.tombstoned",
++  # "tombstoned": "selfdrive.tombstoned",
+   "logcatd": ("selfdrive/logcatd", ["./logcatd"]),
+   "proclogd": ("selfdrive/proclogd", ["./proclogd"]),
+   "boardd": ("selfdrive/boardd", ["./boardd"]),   # not used directly
