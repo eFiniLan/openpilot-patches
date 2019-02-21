@@ -2,7 +2,7 @@
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/selfdrive/thermald.py b/selfdrive/thermald.py
-index fea5a896..c281a5d8 100755
+index fea5a896..531b7c36 100755
 --- a/selfdrive/thermald.py
 +++ b/selfdrive/thermald.py
 @@ -83,7 +83,8 @@ _TEMP_THRS_L = [42.5, 57.5, 72.5, 10000]
@@ -10,7 +10,7 @@ index fea5a896..c281a5d8 100755
  # max fan speed only allowed if battery is hot
  _BAT_TEMP_THERSHOLD = 45.
 -
-+# shutdown timer 90 mins (60 x 90)
++# shutdown timer 90 mins (60sec x 90mins)
 +_SHUTDOWN_AT = 5400
  
  def handle_fan(max_cpu_temp, bat_temp, fan_speed):
@@ -23,19 +23,26 @@ index fea5a896..c281a5d8 100755
  
    off_ts = None
    started_ts = None
-@@ -301,6 +303,15 @@ def thermald_thread():
-     thermal_sock.send(msg.to_bytes())
-     print msg
+@@ -203,6 +205,7 @@ def thermald_thread():
+       msg.thermal.batteryVoltage = int(f.read())
+     with open("/sys/class/power_supply/usb/present") as f:
+       msg.thermal.usbOnline = bool(int(f.read()))
++      usb_online = msg.thermal.usbOnline
  
-+
+     current_filter.update(msg.thermal.batteryCurrent / 1e6)
+ 
+@@ -311,6 +314,14 @@ def thermald_thread():
+ 
+     count += 1
+ 
 +    # shut down EON if usb is not present after certain time
-+    if not msg.thermal.usbOnline:
++    if not usb_online:
 +      shutdown_count += 1
 +    else:
 +      shutdown_count = 0
++
 +    if shutdown_count >= _SHUTDOWN_AT:
 +      os.system('LD_LIBRARY_PATH="" svc power shutdown')
-+
-     # report to server once per minute
-     if (count%60) == 0:
-       cloudlog.event("STATUS_PACKET",
+ 
+ def main(gctx=None):
+   thermald_thread()
