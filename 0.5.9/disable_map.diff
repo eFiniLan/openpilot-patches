@@ -1,0 +1,16 @@
+ selfdrive/manager.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/selfdrive/manager.py b/selfdrive/manager.py
+index 70472887..81737699 100755
+--- a/selfdrive/manager.py
++++ b/selfdrive/manager.py
+@@ -91,7 +91,7 @@ managed_processes = {
+   "controlsd": "selfdrive.controls.controlsd",
+   "radard": "selfdrive.controls.radard",
+   "ubloxd": "selfdrive.locationd.ubloxd",
+-  "mapd": "selfdrive.mapd.mapd",
++  # "mapd": "selfdrive.mapd.mapd",
+   "loggerd": ("selfdrive/loggerd", ["./loggerd"]),
+   "logmessaged": "selfdrive.logmessaged",
+   "tombstoned": "selfdrive.tombstoned",

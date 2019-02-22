@@ -1,0 +1,28 @@
+ selfdrive/car/toyota/interface.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/selfdrive/car/toyota/interface.py b/selfdrive/car/toyota/interface.py
+index 03a19b8a..bc58d841 100755
+--- a/selfdrive/car/toyota/interface.py
++++ b/selfdrive/car/toyota/interface.py
+@@ -327,13 +327,13 @@ class CarInterface(object):
+     elif not ret.cruiseState.enabled:
+       events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
+ 
+-    # disable on pedals rising edge or when brake is pressed and speed isn't zero
+-    if (ret.gasPressed and not self.gas_pressed_prev) or \
+-       (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
+-      events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
+-
+-    if ret.gasPressed:
+-      events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
++    # # disable on pedals rising edge or when brake is pressed and speed isn't zero
++    # if (ret.gasPressed and not self.gas_pressed_prev) or \
++    #    (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
++    #   events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
++    #
++    # if ret.gasPressed:
++    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+ 
+     ret.events = events
+     ret.canMonoTimes = canMonoTimes

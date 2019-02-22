@@ -1,0 +1,16 @@
+ selfdrive/ui/ui.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/selfdrive/ui/ui.c b/selfdrive/ui/ui.c
+index 33e35d38..cc9fb785 100644
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
+@@ -1294,7 +1294,7 @@ static void ui_draw_vision_header(UIState *s) {
+   nvgRect(s->vg, ui_viz_rx, box_y, ui_viz_rw, header_h);
+   nvgFill(s->vg);
+ 
+-  ui_draw_vision_maxspeed(s);
++//  ui_draw_vision_maxspeed(s);
+   ui_draw_vision_speedlimit(s);
+   ui_draw_vision_speed(s);
+   ui_draw_vision_event(s);
