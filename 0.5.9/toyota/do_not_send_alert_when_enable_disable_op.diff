@@ -1,3 +1,7 @@
+#
+# This patch will disable OP sending alerts to car if you enable/disable OP
+#
+
  selfdrive/car/toyota/carcontroller.py | 6 +++++-
  1 file changed, 5 insertions(+), 1 deletion(-)
 

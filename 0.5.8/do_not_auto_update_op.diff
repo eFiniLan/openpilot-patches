@@ -1,3 +1,7 @@
+#
+# This patch remove auto update, suitable for custom fork users
+#
+
  launch_chffrplus.sh | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 

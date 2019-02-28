@@ -1,3 +1,7 @@
+#
+# This patch remove OP disengagement when stop with no lead car, suitable for cars with stock ACC
+#
+
  selfdrive/controls/controlsd.py | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 

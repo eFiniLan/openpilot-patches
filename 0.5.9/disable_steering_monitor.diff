@@ -1,3 +1,7 @@
+#
+# This patch disable steering wheel monitor by change 3 mins limit to a day
+#
+
  selfdrive/controls/lib/driver_monitor.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 

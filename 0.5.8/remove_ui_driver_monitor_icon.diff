@@ -1,3 +1,7 @@
+#
+# This patch remove driver monitor icon
+#
+
  selfdrive/ui/ui.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 

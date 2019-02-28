@@ -1,3 +1,8 @@
+#
+# This patch set fan speed to max (65535), suitable for EONs with Noctua fan mode
+# courtesy of Erich Moraga (https://github.com/ErichMoraga/)
+#
+
  selfdrive/thermald.py | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
@@ -10,10 +15,10 @@ index fea5a896..4f37212f 100755
  _TEMP_THRS_L = [42.5, 57.5, 72.5, 10000]
  # fan speed options
 -_FAN_SPEEDS = [0, 16384, 32768, 65535]
-+_FAN_SPEEDS = [0, 65535, 65535, 65535]
++_FAN_SPEEDS = [65535, 65535, 65535, 65535]
  # max fan speed only allowed if battery is hot
 -_BAT_TEMP_THERSHOLD = 45.
-+_BAT_TEMP_THERSHOLD = 30.
++_BAT_TEMP_THERSHOLD = 20.
  
  
  def handle_fan(max_cpu_temp, bat_temp, fan_speed):

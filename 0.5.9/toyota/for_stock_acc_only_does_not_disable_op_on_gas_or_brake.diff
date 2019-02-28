@@ -1,3 +1,7 @@
+#
+# This patch will disable OP disengagement when gas or brake is pressed.
+#
+
  selfdrive/car/toyota/interface.py | 14 +++++++-------
  1 file changed, 7 insertions(+), 7 deletions(-)
 

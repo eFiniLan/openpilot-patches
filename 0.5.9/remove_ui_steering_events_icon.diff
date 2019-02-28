@@ -1,3 +1,7 @@
+#
+# The patch remove the top right icon (steering wheel icon or slow turn icon)
+#
+
  selfdrive/ui/ui.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 

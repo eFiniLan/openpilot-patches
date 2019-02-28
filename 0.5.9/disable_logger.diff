@@ -1,3 +1,9 @@
+#
+# This patch disable logger entirely, suitable for users who do not wish to contribute data back to comma ai.
+# This will disable uploader, loggerd, logmessaged, logcatd, tombstoned, proclogd
+# You will not get any comma points in the future if you apply this patch.
+#
+
  launch_openpilot.sh | 1 +
  1 file changed, 1 insertion(+)
 

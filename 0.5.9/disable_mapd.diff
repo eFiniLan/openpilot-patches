@@ -1,3 +1,7 @@
+#
+# This patch disable map entirely so OP won't request data from OpenStreetMap to reduce mobile data usage.
+#
+
  selfdrive/manager.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 

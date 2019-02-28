@@ -1,3 +1,7 @@
+#
+# This patch will disable safety check on panda
+#
+
  panda/board/safety/safety_toyota.h | 21 +++++++++++----------
  1 file changed, 11 insertions(+), 10 deletions(-)
 

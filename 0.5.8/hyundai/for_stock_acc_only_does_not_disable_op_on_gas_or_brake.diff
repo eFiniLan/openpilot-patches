@@ -1,3 +1,7 @@
+#
+# This patch will disable OP disengagement when gas or brake is pressed.
+#
+
  selfdrive/car/hyundai/interface.py | 12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 

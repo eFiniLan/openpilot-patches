@@ -1,3 +1,8 @@
+#
+# This patch will use generic toggle (e.g. AHB) as OP switch, so when toggle is on and ACC is on (not enabled), it will turn on OP
+# this is suitable for stock ACC cars so users can have OP to control steering and gas and brake manually.
+#
+
  selfdrive/car/toyota/carstate.py | 9 +++++++++
  1 file changed, 9 insertions(+)
 

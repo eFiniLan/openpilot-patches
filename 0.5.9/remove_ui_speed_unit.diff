@@ -1,3 +1,7 @@
+#
+# This patch remove current speed unit (kph or mph)
+#
+
  selfdrive/ui/ui.c | 18 +++++++++---------
  1 file changed, 9 insertions(+), 9 deletions(-)
 

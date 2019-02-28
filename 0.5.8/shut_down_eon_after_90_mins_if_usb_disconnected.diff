@@ -1,3 +1,8 @@
+ #
+ # This patch adds a timer to thermald.py that allows your EON shutdown after 90 mins of inactivity (no power through USB),
+ # to adjust shutdown time, change _SHUTDOWN_AT = 5400 value (60 secs * 90 mins = 5400 secs).
+ #
+
  selfdrive/thermald.py | 13 ++++++++++++-
  1 file changed, 12 insertions(+), 1 deletion(-)
 

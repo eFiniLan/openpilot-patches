@@ -1,3 +1,7 @@
+#
+# This patch will disable OP disengagement when gas or brake is pressed.
+#
+
  selfdrive/car/gm/interface.py | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
