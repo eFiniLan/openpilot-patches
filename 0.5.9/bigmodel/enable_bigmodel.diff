@@ -1,0 +1,34 @@
+ selfdrive/visiond/build_from_src.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/selfdrive/visiond/build_from_src.mk b/selfdrive/visiond/build_from_src.mk
+index e23887f2..2d59d7fb 100644
+--- a/selfdrive/visiond/build_from_src.mk
++++ b/selfdrive/visiond/build_from_src.mk
+@@ -136,8 +136,8 @@ OBJS += $(PLATFORM_OBJS) \
+         $(PHONELIBS)/json11/json11.o \
+         $(CEREAL_OBJS)
+ 
+-#MODEL_DATA = ../../models/driving_bigmodel.dlc ../../models/monitoring_model.dlc
+-MODEL_DATA = ../../models/driving_model.dlc ../../models/monitoring_model.dlc ../../models/posenet.dlc
++MODEL_DATA = ../../models/driving_bigmodel.dlc ../../models/monitoring_model.dlc ../../models/posenet.dlc
++#MODEL_DATA = ../../models/driving_model.dlc ../../models/monitoring_model.dlc ../../models/posenet.dlc
+ MODEL_OBJS = $(MODEL_DATA:.dlc=.o)
+ OBJS += $(MODEL_OBJS)
+ 
+ selfdrive/visiond/model.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/selfdrive/visiond/model.h b/selfdrive/visiond/model.h
+index 06a65f85..fbf3fabf 100644
+--- a/selfdrive/visiond/model.h
++++ b/selfdrive/visiond/model.h
+@@ -2,7 +2,7 @@
+ #define MODEL_H
+
+ // gate this here
+-//#define BIGMODEL
++#define BIGMODEL
+ #define TEMPORAL
+
+ #include "common/mat.h"
