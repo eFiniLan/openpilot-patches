@@ -1,5 +1,9 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/toyota/always_on_op.diff | git apply -v
 #
-# This patch will disable safety check on panda
+# (Suitable for Stock ACC)
+# This patch make your OP always on so users can have OP to control steering and gas and brake manually.
+# 1. Disable safety check in safety_toyota.h
+# 2. Use generic toggle as OP switch
 #
 
  panda/board/safety/safety_toyota.h | 21 +++++++++++----------
@@ -37,3 +41,25 @@ index 9cab1512..d8f93a6c 100644
  
    int bus = (to_push->RDTR >> 4) & 0xF;
    // msgs are only on bus 2 if panda is connected to frc
+
+ selfdrive/car/toyota/carstate.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/selfdrive/car/toyota/carstate.py b/selfdrive/car/toyota/carstate.py
+index bb3b3f05..80ec37ea 100644
+--- a/selfdrive/car/toyota/carstate.py
++++ b/selfdrive/car/toyota/carstate.py
+@@ -170,3 +170,12 @@ class CarState(object):
+       self.generic_toggle = cp.vl["AUTOPARK_STATUS"]['STATE'] != 0
+     else:
+       self.generic_toggle = bool(cp.vl["LIGHT_STALK"]['AUTO_HIGH_BEAM'])
++
++    if self.generic_toggle and self.main_on:
++      self.pcm_acc_active = True
++      if self.standstill:
++        # self.pcm_acc_active = False
++        self.pcm_acc_status = 7
++      else:
++        # self.pcm_acc_active = True
++        self.pcm_acc_status = 1
+

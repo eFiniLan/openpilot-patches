@@ -1,3 +1,4 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.8/do_not_auto_update_op.diff | git apply -v
 #
 # This patch remove auto update, suitable for custom fork users
 #

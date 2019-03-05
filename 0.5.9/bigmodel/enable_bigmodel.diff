@@ -1,10 +1,9 @@
+# cd /data/openpilot && curl -o models/driving_bigmodel.dlc https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/bigmodel/driving_bigmodel.dlc && md5sum -c <<< "da20c5670e044bf6ea1dbd8dee73d7fe models/driving_bigmodel.dlc" && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/bigmodel/enable_bigmodel.diff | git apply -v
 #
 # driving_bigmodel.dlc checksum: da20c5670e044bf6ea1dbd8dee73d7fe
 # This is the patch to enable EON to use bigmodel from geohot
 # Bigmodel should be able to read lane line better than regular model
 # * This will consume more CPU/battery power
-# to apply:
-# cd /data/openpilot && curl -o models/driving_bigmodel.dlc https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/bigmodel/driving_bigmodel.dlc && md5sum -c <<< "da20c5670e044bf6ea1dbd8dee73d7fe models/driving_bigmodel.dlc" && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/bigmodel/enable_bigmodel.diff | git apply -v
 #
 
  selfdrive/visiond/build_from_src.mk | 4 ++--

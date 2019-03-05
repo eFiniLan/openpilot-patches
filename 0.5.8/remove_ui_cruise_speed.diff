@@ -1,3 +1,4 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.8/remove_ui_cruise_speed.diff | git apply -v
 #
 # This patch remove set cruise speed icon
 #

@@ -1,5 +1,7 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.8/disable_steering_monitor.diff | git apply -v
 #
 # This patch disable steering wheel monitor by change 3 mins limit to a day
+# ** Do not enable driver monitor. **
 #
 
  selfdrive/controls/lib/driver_monitor.py | 2 +-

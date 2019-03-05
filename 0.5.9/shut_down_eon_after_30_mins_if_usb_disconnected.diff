@@ -1,7 +1,7 @@
-# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.8/shut_down_eon_after_90_mins_if_usb_disconnected.diff | git apply -v
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/shut_down_eon_after_60_mins_if_usb_disconnected.diff | git apply -v
 #
 # This patch adds a timer to thermald.py that allows your EON shutdown after 90 mins of inactivity (no power through USB),
-# to adjust shutdown time, change _SHUTDOWN_AT = 5400 value (60 secs * 90 mins = 5400 secs).
+# to adjust shutdown time, change _SHUTDOWN_AT = 1800 value (60 secs * 30 mins = 1800 secs).
 #
 
  selfdrive/thermald.py | 13 ++++++++++++-
@@ -17,7 +17,7 @@ index fea5a896..531b7c36 100755
  _BAT_TEMP_THERSHOLD = 45.
 -
 +# shutdown timer 90 mins (60sec x 90mins)
-+_SHUTDOWN_AT = 5400
++_SHUTDOWN_AT = 1800
  
  def handle_fan(max_cpu_temp, bat_temp, fan_speed):
    new_speed_h = next(speed for speed, temp_h in zip(_FAN_SPEEDS, _TEMP_THRS_H) if temp_h > max_cpu_temp)

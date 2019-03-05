@@ -1,3 +1,4 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/noctua_fan_mod_always_run_full_speed.diff | git apply -v
 #
 # This patch set fan speed to max (65535), suitable for EONs with Noctua fan mode
 # courtesy of Erich Moraga (https://github.com/ErichMoraga/)

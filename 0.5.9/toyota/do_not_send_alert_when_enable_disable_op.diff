@@ -1,3 +1,4 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/toyota/do_not_send_alert_when_enable_disable_op.diff | git apply -v
 #
 # This patch will disable OP sending alerts to car if you enable/disable OP
 #

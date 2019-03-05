@@ -1,5 +1,7 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/disable_steering_monitor.diff | git apply -v
 #
 # This patch disable steering wheel monitor by change 3 mins limit to a day
+# ** Do not enable driver monitor. **
 #
 
  selfdrive/controls/lib/driver_monitor.py | 2 +-
@@ -14,7 +16,7 @@ index 10e0e0be..67136403 100644
  _DT = 0.01                  # update runs at 100Hz
  _DTM = 0.1                  # DM runs at 10Hz
 -_AWARENESS_TIME = 180       # 3 minutes limit without user touching steering wheels make the car enter a terminal status
-+_AWARENESS_TIME = 86400     # 3 minutes limit without user touching steering wheels make the car enter a terminal status
++_AWARENESS_TIME = 86400     # 24 hours limit without user touching steering wheels make the car enter a terminal status
  _AWARENESS_PRE_TIME = 20.   # a first alert is issued 20s before expiration
  _AWARENESS_PROMPT_TIME = 5. # a second alert is issued 5s before start decelerating the car
  _DISTRACTED_TIME = 7.

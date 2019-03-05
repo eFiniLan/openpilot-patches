@@ -1,3 +1,4 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/remove_ui_steering_events_icon.diff | git apply -v
 #
 # The patch remove the top right icon (steering wheel icon or slow turn icon)
 #
