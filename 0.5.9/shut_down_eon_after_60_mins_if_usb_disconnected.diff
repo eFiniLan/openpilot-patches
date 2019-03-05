@@ -16,7 +16,7 @@ index fea5a896..531b7c36 100755
  # max fan speed only allowed if battery is hot
  _BAT_TEMP_THERSHOLD = 45.
 -
-+# shutdown timer 90 mins (60sec x 90mins)
++# shutdown timer 60 mins (60sec x 60mins)
 +_SHUTDOWN_AT = 3600
  
  def handle_fan(max_cpu_temp, bat_temp, fan_speed):

@@ -7,41 +7,27 @@ A collection of patches for modifying official openpilot, it may works with othe
 usage
 ======
 
-1. go to your openpilot folder
+1. find your openpilot version, you will see something like this: **#define COMMA_VERSION "0.5.8-release** and your version will be **0.5.8**
     ```bash
-    cd /data/openpilot
+    cat /data/openpilot/selfdrive/common/version.h | grep COMMA_VERSION
     ```
 
-2. find your openpilot version, you will see something like this: **#define COMMA_VERSION "0.5.8-release** and your version will be **0.5.8**
+2. find the patch file and copy the command from the top of the file, e.g. (0.5.9/disable_mapd.diff line 1): 
     ```bash
-    cat selfdrive/common/version.h | grep COMMA_VERSION
+    cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.9/disable_mapd.diff | git apply -v
+    ```
+3. If successful, you should see messages like this:
+    ```bash
+    Checking patch selfdrive/manager.py...
+    Applied patch selfdrive/manager.py cleanly.
     ```
 
-3. download and apply patch, repeat this step if you want to apply more patches, example format:
-    ```bash
-    curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/<version>/<patch file> | git apply -v
-    ```
-    real example:
-    ```bash
-    curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.8/shut_down_eon_after_90_mins_if_usb_disconnected.diff | git apply -v
-    ```
-4. If successful, you should see messages like this:
-    ```bash
-    Checking patch selfdrive/thermald.py...
-    Applied patch selfdrive/thermald.py cleanly.
-    ```
-
-5. Now make openpilot compile, this is to avoid soft brick openpilot.
+4. Now make openpilot compile, this is to avoid soft brick your device.
     ```bash
     make
     ```
 
-6. If something went wrong, reset your branch and restart again:
+5. If something went wrong, reset your branch and restart again:
     ```bash
     git reset --hard
-    ```
-
-7. now you can safely reboot your EON
-    ```bash
-    reboot
     ```
