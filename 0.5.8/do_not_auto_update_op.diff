@@ -7,7 +7,7 @@
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/launch_chffrplus.sh b/launch_chffrplus.sh
-index 41f8a607..69a243e3 100755
+index 41f8a607..69a243e3
 --- a/launch_chffrplus.sh
 +++ b/launch_chffrplus.sh
 @@ -6,11 +6,11 @@ fi

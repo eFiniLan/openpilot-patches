@@ -7,7 +7,7 @@
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/selfdrive/manager.py b/selfdrive/manager.py
-index 70472887..81737699 100755
+index 70472887..81737699
 --- a/selfdrive/manager.py
 +++ b/selfdrive/manager.py
 @@ -91,7 +91,7 @@ managed_processes = {

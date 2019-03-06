@@ -8,10 +8,10 @@
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/selfdrive/car/toyota/interface.py b/selfdrive/car/toyota/interface.py
-index 03a19b8a..bc58d841 100755
+index 8b6cb0a0..91a7d0ef
 --- a/selfdrive/car/toyota/interface.py
 +++ b/selfdrive/car/toyota/interface.py
-@@ -327,13 +327,13 @@ class CarInterface(object):
+@@ -345,13 +345,13 @@ class CarInterface(object):
      elif not ret.cruiseState.enabled:
        events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
  

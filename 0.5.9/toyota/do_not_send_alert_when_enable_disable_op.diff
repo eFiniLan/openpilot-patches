@@ -7,7 +7,7 @@
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/selfdrive/car/toyota/carcontroller.py b/selfdrive/car/toyota/carcontroller.py
-index 8c1ed119..fb417d12 100644
+index 8c1ed119..fb417d12
 --- a/selfdrive/car/toyota/carcontroller.py
 +++ b/selfdrive/car/toyota/carcontroller.py
 @@ -69,7 +69,11 @@ def process_hud_alert(hud_alert, audible_alert):

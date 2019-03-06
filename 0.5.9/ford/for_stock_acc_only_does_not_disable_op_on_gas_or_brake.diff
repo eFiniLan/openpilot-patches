@@ -8,7 +8,7 @@
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/selfdrive/car/ford/interface.py b/selfdrive/car/ford/interface.py
-index 0e29ea62..dfed7d21 100755
+index 0e29ea62..dfed7d21
 --- a/selfdrive/car/ford/interface.py
 +++ b/selfdrive/car/ford/interface.py
 @@ -189,12 +189,12 @@ class CarInterface(object):

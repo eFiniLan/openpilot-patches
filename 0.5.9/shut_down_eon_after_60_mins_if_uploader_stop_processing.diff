@@ -8,7 +8,7 @@
  1 file changed, 9 insertions(+)
 
 diff --git a/selfdrive/loggerd/uploader.py b/selfdrive/loggerd/uploader.py
-index 670e924a..dd14e0e9 100644
+index 670e924a..c20eac35
 --- a/selfdrive/loggerd/uploader.py
 +++ b/selfdrive/loggerd/uploader.py
 @@ -263,6 +263,8 @@ class Uploader(object):

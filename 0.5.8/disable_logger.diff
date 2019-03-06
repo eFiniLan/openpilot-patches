@@ -9,7 +9,7 @@
  1 file changed, 1 insertion(+)
 
 diff --git a/launch_openpilot.sh b/launch_openpilot.sh
-index 1525e171..8b077e4d 100755
+index 1525e171..8b077e4d
 --- a/launch_openpilot.sh
 +++ b/launch_openpilot.sh
 @@ -1,5 +1,6 @@

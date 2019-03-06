@@ -8,7 +8,7 @@
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/selfdrive/car/hyundai/interface.py b/selfdrive/car/hyundai/interface.py
-index 5399d827..9f8c47b1 100644
+index 5399d827..9f8c47b1
 --- a/selfdrive/car/hyundai/interface.py
 +++ b/selfdrive/car/hyundai/interface.py
 @@ -281,12 +281,12 @@ class CarInterface(object):

@@ -7,7 +7,7 @@
  1 file changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/selfdrive/ui/ui.c b/selfdrive/ui/ui.c
-index 33e35d38..2e575193 100644
+index 33e35d38..2e575193
 --- a/selfdrive/ui/ui.c
 +++ b/selfdrive/ui/ui.c
 @@ -1163,15 +1163,15 @@ static void ui_draw_vision_speed(UIState *s) {

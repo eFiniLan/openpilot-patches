@@ -7,7 +7,7 @@
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/selfdrive/controls/controlsd.py b/selfdrive/controls/controlsd.py
-index 7a17556e..37e0ce44 100755
+index 7a17556e..37e0ce44
 --- a/selfdrive/controls/controlsd.py
 +++ b/selfdrive/controls/controlsd.py
 @@ -488,8 +488,8 @@ def controlsd_thread(gctx=None, rate=100):

@@ -8,7 +8,7 @@
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/selfdrive/thermald.py b/selfdrive/thermald.py
-index fea5a896..531b7c36 100755
+index fea5a896..b25fba74
 --- a/selfdrive/thermald.py
 +++ b/selfdrive/thermald.py
 @@ -83,7 +83,8 @@ _TEMP_THRS_L = [42.5, 57.5, 72.5, 10000]

@@ -10,7 +10,7 @@
  1 file changed, 11 insertions(+), 10 deletions(-)
 
 diff --git a/panda/board/safety/safety_toyota.h b/panda/board/safety/safety_toyota.h
-index 9cab1512..d8f93a6c 100644
+index 9cab1512..d8f93a6c
 --- a/panda/board/safety/safety_toyota.h
 +++ b/panda/board/safety/safety_toyota.h
 @@ -48,16 +48,17 @@ static void toyota_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
@@ -46,7 +46,7 @@ index 9cab1512..d8f93a6c 100644
  1 file changed, 9 insertions(+)
 
 diff --git a/selfdrive/car/toyota/carstate.py b/selfdrive/car/toyota/carstate.py
-index bb3b3f05..80ec37ea 100644
+index bb3b3f05..80ec37ea
 --- a/selfdrive/car/toyota/carstate.py
 +++ b/selfdrive/car/toyota/carstate.py
 @@ -170,3 +170,12 @@ class CarState(object):

@@ -8,7 +8,7 @@
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/selfdrive/car/gm/interface.py b/selfdrive/car/gm/interface.py
-index 9ec1b9e5..4affa745 100755
+index 9ec1b9e5..4affa745
 --- a/selfdrive/car/gm/interface.py
 +++ b/selfdrive/car/gm/interface.py
 @@ -301,11 +301,11 @@ class CarInterface(object):

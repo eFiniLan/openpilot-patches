@@ -7,7 +7,7 @@
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/selfdrive/ui/ui.c b/selfdrive/ui/ui.c
-index 33e35d38..967502e0 100644
+index 33e35d38..967502e0
 --- a/selfdrive/ui/ui.c
 +++ b/selfdrive/ui/ui.c
 @@ -1309,7 +1309,7 @@ static void ui_draw_vision_footer(UIState *s) {

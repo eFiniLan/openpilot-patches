@@ -10,7 +10,7 @@
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/selfdrive/visiond/build_from_src.mk b/selfdrive/visiond/build_from_src.mk
-index e23887f2..2d59d7fb 100644
+index e23887f2..2d59d7fb
 --- a/selfdrive/visiond/build_from_src.mk
 +++ b/selfdrive/visiond/build_from_src.mk
 @@ -136,8 +136,8 @@ OBJS += $(PLATFORM_OBJS) \
