@@ -24,7 +24,7 @@ usage
 
 4. Now make openpilot compile, this is to avoid soft brick your device.
     ```bash
-    make
+    python -m compileall . && make
     ```
 
 5. If something went wrong, reset your branch and restart again:
