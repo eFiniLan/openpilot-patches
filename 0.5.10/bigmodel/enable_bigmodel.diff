@@ -1,0 +1,42 @@
+# cd /data/openpilot && curl -o models/driving_bigmodel.dlc https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.10/bigmodel/driving_bigmodel.dlc && md5sum -c <<< "da20c5670e044bf6ea1dbd8dee73d7fe models/driving_bigmodel.dlc" && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.10/bigmodel/enable_bigmodel.diff | git apply -v
+#
+# driving_bigmodel.dlc checksum: da20c5670e044bf6ea1dbd8dee73d7fe
+# This is the patch to enable EON to use bigmodel from geohot
+# Bigmodel should be able to read lane line better than regular model
+# * This will consume more CPU/battery power
+#
+
+ selfdrive/visiond/build_from_src.mk | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/selfdrive/visiond/build_from_src.mk b/selfdrive/visiond/build_from_src.mk
+index e23887f2..2d59d7fb
+--- a/selfdrive/visiond/build_from_src.mk
++++ b/selfdrive/visiond/build_from_src.mk
+@@ -136,8 +136,8 @@ OBJS += $(PLATFORM_OBJS) \
+         $(PHONELIBS)/json11/json11.o \
+         $(CEREAL_OBJS)
+ 
+-#MODEL_DATA = ../../models/driving_bigmodel.dlc ../../models/monitoring_model.dlc
+-MODEL_DATA = ../../models/driving_model.dlc ../../models/monitoring_model.dlc ../../models/posenet.dlc
++MODEL_DATA = ../../models/driving_bigmodel.dlc ../../models/monitoring_model.dlc ../../models/posenet.dlc
++#MODEL_DATA = ../../models/driving_model.dlc ../../models/monitoring_model.dlc ../../models/posenet.dlc
+ MODEL_OBJS = $(MODEL_DATA:.dlc=.o)
+ OBJS += $(MODEL_OBJS)
+ 
+ selfdrive/visiond/model.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/selfdrive/visiond/model.h b/selfdrive/visiond/model.h
+index 06a65f85..fbf3fabf
+--- a/selfdrive/visiond/model.h
++++ b/selfdrive/visiond/model.h
+@@ -2,7 +2,7 @@
+ #define MODEL_H
+ 
+ // gate this here
+-//#define BIGMODEL
++#define BIGMODEL
+ #define TEMPORAL
+ 
+ #include "common/mat.h"

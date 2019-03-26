@@ -1,0 +1,32 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.10/hyundai/for_stock_acc_only_does_not_disable_op_on_gas_or_brake.diff | git apply -v
+#
+# (Suitable for Stock ACC)
+# This patch will disable OP disengagement when gas or brake is pressed.
+#
+
+ selfdrive/car/hyundai/interface.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/selfdrive/car/hyundai/interface.py b/selfdrive/car/hyundai/interface.py
+index a854eebb..00607225
+--- a/selfdrive/car/hyundai/interface.py
++++ b/selfdrive/car/hyundai/interface.py
+@@ -291,12 +291,12 @@ class CarInterface(object):
+       events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
+ 
+     # disable on pedals rising edge or when brake is pressed and speed isn't zero
+-    if (ret.gasPressed and not self.gas_pressed_prev) or \
+-      (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgoRaw > 0.1)):
+-      events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
+-
+-    if ret.gasPressed:
+-      events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
++    # if (ret.gasPressed and not self.gas_pressed_prev) or \
++    #   (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgoRaw > 0.1)):
++    #   events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
++    #
++    # if ret.gasPressed:
++    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+ 
+     if self.low_speed_alert:
+       events.append(create_event('belowSteerSpeed', [ET.WARNING]))

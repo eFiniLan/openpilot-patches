@@ -1,0 +1,37 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.10/remove_ui_speed_unit.diff | git apply -v
+#
+# This patch remove current speed unit (kph or mph)
+#
+
+ selfdrive/ui/ui.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/selfdrive/ui/ui.c b/selfdrive/ui/ui.c
+index 33e35d38..2e575193
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
+@@ -1163,15 +1163,15 @@ static void ui_draw_vision_speed(UIState *s) {
+   nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 255));
+   nvgText(s->vg, viz_speed_x+viz_speed_w/2, 240, speed_str, NULL);
+ 
+-  nvgFontFace(s->vg, "sans-regular");
+-  nvgFontSize(s->vg, 36*2.5);
+-  nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 200));
+-
+-  if (s->is_metric) {
+-    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 320, "kph", NULL);
+-  } else {
+-    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 320, "mph", NULL);
+-  }
++//  nvgFontFace(s->vg, "sans-regular");
++//  nvgFontSize(s->vg, 36*2.5);
++//  nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 200));
++//
++//  if (s->is_metric) {
++//    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 320, "kph", NULL);
++//  } else {
++//    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 320, "mph", NULL);
++//  }
+ }
+ 
+ static void ui_draw_vision_event(UIState *s) {

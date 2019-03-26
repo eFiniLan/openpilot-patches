@@ -28,15 +28,15 @@ index e23887f2..2d59d7fb
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/selfdrive/visiond/model.h b/selfdrive/visiond/model.h
-index 06a65f85..fbf3fabf 100644
+index 06a65f85..fbf3fabf
 --- a/selfdrive/visiond/model.h
 +++ b/selfdrive/visiond/model.h
 @@ -2,7 +2,7 @@
  #define MODEL_H
-
+ 
  // gate this here
 -//#define BIGMODEL
 +#define BIGMODEL
  #define TEMPORAL
-
+ 
  #include "common/mat.h"

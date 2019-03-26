@@ -1,0 +1,32 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.10/honda/for_stock_acc_only_does_not_disable_op_on_gas_or_brake.diff | git apply -v
+#
+# (Suitable for Stock ACC)
+# This patch will disable OP disengagement when gas or brake is pressed.
+#
+
+ selfdrive/car/honda/interface.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/selfdrive/car/honda/interface.py b/selfdrive/car/honda/interface.py
+index 3acd2c74..162437da
+--- a/selfdrive/car/honda/interface.py
++++ b/selfdrive/car/honda/interface.py
+@@ -517,12 +517,12 @@ class CarInterface(object):
+       events.append(create_event('speedTooLow', [ET.NO_ENTRY]))
+ 
+     # disable on pedals rising edge or when brake is pressed and speed isn't zero
+-    if (ret.gasPressed and not self.gas_pressed_prev) or \
+-       (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
+-      events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
+-
+-    if ret.gasPressed:
+-      events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
++    # if (ret.gasPressed and not self.gas_pressed_prev) or \
++    #    (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
++    #   events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
++    #
++    # if ret.gasPressed:
++    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+ 
+     # it can happen that car cruise disables while comma system is enabled: need to
+     # keep braking if needed or if the speed is very low
