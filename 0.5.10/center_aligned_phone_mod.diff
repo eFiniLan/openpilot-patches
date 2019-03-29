@@ -1,0 +1,20 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.10/vertical_aligned_phone_camera_mod.diff | git apply -v
+#
+# This patch prevents left line hugging when the phone camera is vertical aligned to car camera
+#
+ selfdrive/controls/lib/model_parser.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/selfdrive/controls/lib/model_parser.py b/selfdrive/controls/lib/model_parser.py
+index 747e918f..202678ee
+--- a/selfdrive/controls/lib/model_parser.py
++++ b/selfdrive/controls/lib/model_parser.py
+@@ -1,7 +1,7 @@
+ from common.numpy_fast import interp
+ from selfdrive.controls.lib.latcontrol_helpers import model_polyfit, calc_desired_path, compute_path_pinv
+ 
+-CAMERA_OFFSET = 0.06  # m from center car to camera
++CAMERA_OFFSET = 0.  # m from center car to camera
+ 
+ 
+ class ModelParser(object):
