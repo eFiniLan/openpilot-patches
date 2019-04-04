@@ -1,24 +1,28 @@
 # cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.10/redirect_crash_log_to_me.diff | git apply -v
 #
-# This patch will send crash log to me (eFiniLan), allow me to diagnose any porting issue.
+# This patch will redirect crash log to me (eFiniLan), allow me to diagnose any porting issue.
 # courtesy of Arne Schwarck (https://github.com/arne182/)
 #
 
- selfdrive/crash.py | 27 +++++++++++++++++++++++++--
- 1 file changed, 25 insertions(+), 2 deletions(-)
+ selfdrive/crash.py | 31 +++++++++++++++++++++++++++++--
+ 1 file changed, 29 insertions(+), 2 deletions(-)
 
 diff --git a/selfdrive/crash.py b/selfdrive/crash.py
-index 94bdfd12..ed5a68d7
+index 94bdfd12..07a91a97
 --- a/selfdrive/crash.py
 +++ b/selfdrive/crash.py
-@@ -18,8 +18,31 @@ if os.getenv("NOLOG") or os.getenv("NOCRASH"):
+@@ -18,8 +18,35 @@ if os.getenv("NOLOG") or os.getenv("NOCRASH"):
  else:
    from raven import Client
    from raven.transport.http import HTTPTransport
 -  client = Client('https://1994756b5e6f41cf939a4c65de45f4f2:cefebaf3a8aa40d182609785f7189bd7@app.getsentry.com/77924',
 -                  install_sys_hook=False, transport=HTTPTransport, release=version, tags={'dirty': dirty})
 +
-+  error_tags = {'dirty': dirty, 'branch': 'release2'}
++  with open("/data/openpilot/.git/HEAD", "r") as f:
++    content = f.read().split(' ')
++  branch = content[1]
++
++  error_tags = {'dirty': dirty, 'branch': branch}
 +
 +  try:
 +    with open("/data/data/ai.comma.plus.offroad/files/persistStore/persist-auth", "r") as f:
@@ -45,3 +49,4 @@ index 94bdfd12..ed5a68d7
  
    def capture_exception(*args, **kwargs):
      client.captureException(*args, **kwargs)
+
