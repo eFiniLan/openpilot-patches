@@ -4,28 +4,19 @@
 # This patch will disable OP disengagement when gas is pressed.
 #
 
- selfdrive/car/toyota/interface.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/selfdrive/car/toyota/interface.py b/selfdrive/car/toyota/interface.py
-index 8b6cb0a0..c9106065
---- a/selfdrive/car/toyota/interface.py
-+++ b/selfdrive/car/toyota/interface.py
-@@ -346,12 +346,12 @@ class CarInterface(object):
+--- selfdrive/car/toyota/interface.py
++++ selfdrive/car/toyota/interface.py
+@@ -346,13 +346,9 @@
        events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
-
+ 
      # disable on pedals rising edge or when brake is pressed and speed isn't zero
 -    if (ret.gasPressed and not self.gas_pressed_prev) or \
 -       (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
-+    # if (ret.gasPressed and not self.gas_pressed_prev) or \
 +    if ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001):
        events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
-
+ 
 -    if ret.gasPressed:
 -      events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
-+    # if ret.gasPressed:
-+    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
-
+-
      ret.events = events
      ret.canMonoTimes = canMonoTimes
-
