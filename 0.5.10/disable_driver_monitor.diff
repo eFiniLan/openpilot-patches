@@ -3,11 +3,6 @@
 # This patch prevents driver monitor sending warning events
 #
 
- selfdrive/controls/lib/driver_monitor.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/selfdrive/controls/lib/driver_monitor.py b/selfdrive/controls/lib/driver_monitor.py
-index 10e0e0be..1ce77e77
 --- a/selfdrive/controls/lib/driver_monitor.py
 +++ b/selfdrive/controls/lib/driver_monitor.py
 @@ -131,8 +131,8 @@ class DriverStatus():
