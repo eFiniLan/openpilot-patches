@@ -3,9 +3,9 @@
 # This patch prevents driver monitor sending warning events
 #
 
---- a/selfdrive/controls/lib/driver_monitor.py
-+++ b/selfdrive/controls/lib/driver_monitor.py
-@@ -131,8 +131,8 @@ class DriverStatus():
+--- selfdrive/controls/lib/driver_monitor.py
++++ selfdrive/controls/lib/driver_monitor.py
+@@ -133,8 +133,8 @@
      elif self.awareness <= self.threshold_pre:
        # pre green alert
        alert = 'preDriverDistracted' if self.monitor_on else 'preDriverUnresponsive'
@@ -13,6 +13,6 @@
 -      events.append(create_event(alert, [ET.WARNING]))
 +    # if alert is not None:
 +    #   events.append(create_event(alert, [ET.WARNING]))
- 
+
      return events
- 
+
