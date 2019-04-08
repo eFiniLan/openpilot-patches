@@ -3,8 +3,8 @@
 # This patch prevents driver monitor sending warning events
 #
 
---- selfdrive/controls/lib/driver_monitor.py
-+++ selfdrive/controls/lib/driver_monitor.py
+--- a/selfdrive/controls/lib/driver_monitor.py
++++ b/selfdrive/controls/lib/driver_monitor.py
 @@ -133,8 +133,8 @@
      elif self.awareness <= self.threshold_pre:
        # pre green alert
