@@ -1,0 +1,16 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/do_not_disengage_op_if_stop_with_no_lead_car.diff | git apply -v
+#
+# This patch remove OP disengagement when stop with no lead car, suitable for cars with stock ACC
+#
+
+--- selfdrive/controls/controlsd.py
++++ selfdrive/controls/controlsd.py
+@@ -488,8 +488,8 @@ def controlsd_thread(gctx=None, rate=100):
+     events += list(plan.plan.events)
+ 
+-    # Only allow engagement with brake pressed when stopped behind another stopped car
+-    if CS.brakePressed and plan.plan.vTargetFuture >= STARTING_TARGET_SPEED and not CP.radarOffCan and CS.vEgo < 0.3:
+-      events.append(create_event('noTarget', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE]))
+ 
+     if not passive:
+       # update control state

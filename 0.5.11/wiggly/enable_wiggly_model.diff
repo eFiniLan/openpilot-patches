@@ -1,0 +1,8 @@
+# cd /data/openpilot && curl -o selfdrive/visiond/visiond https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/wiggly/visiond && md5sum -c <<< "c507ec16e5ab05414a4722a10a23c2ac selfdrive/visiond/visiond"
+#
+# visiond checksum: c507ec16e5ab05414a4722a10a23c2ac
+#
+# This patch enables EON to use wiggly visiond from 0.5.6
+# wiggly has better lane detection than stock but worse than bigmodel
+# stock < wiggly < bigmodel
+#

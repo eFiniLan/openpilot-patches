@@ -1,0 +1,50 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/disable_driver_monitor.diff | git apply -v
+#
+# This patch prevents driver monitor sending warning events
+# This patch will also remove the face icon
+#
+
+--- selfdrive/ui/ui.c
++++ selfdrive/ui/ui.c
+@@ -1433,7 +1433,7 @@
+   nvgBeginPath(s->vg);
+   nvgRect(s->vg, ui_viz_rx, footer_y, ui_viz_rw, footer_h);
+ 
+-  ui_draw_vision_face(s);
+   ui_draw_vision_map(s);
+ }
+ 
+--- selfdrive/controls/lib/driver_monitor.py
++++ selfdrive/controls/lib/driver_monitor.py
+@@ -132,31 +132,6 @@
+ 
+ 
+   def update(self, events, driver_engaged, ctrl_active, standstill):
+-
+-    driver_engaged |= (self.driver_distraction_filter.x < 0.37 and self.monitor_on)
+-
+-    if (driver_engaged and self.awareness > 0.) or not ctrl_active:
+-      # always reset if driver is in control (unless we are in red alert state) or op isn't active
+-      self.awareness = 1.
+-
+-    # only update if face is detected, driver is distracted and distraction filter is high
+-    if (not self.monitor_on or (self.driver_distraction_filter.x > 0.63 and self.driver_distracted and self.face_detected)) and \
+-       not (standstill and self.awareness - self.step_change <= self.threshold_prompt):
+-      self.awareness = max(self.awareness - self.step_change, -0.1)
+-
+-    alert = None
+-    if self.awareness <= 0.:
+-      # terminal red alert: disengagement required
+-      alert = 'driverDistracted' if self.monitor_on else 'driverUnresponsive'
+-    elif self.awareness <= self.threshold_prompt:
+-      # prompt orange alert
+-      alert = 'promptDriverDistracted' if self.monitor_on else 'promptDriverUnresponsive'
+-    elif self.awareness <= self.threshold_pre:
+-      # pre green alert
+-      alert = 'preDriverDistracted' if self.monitor_on else 'preDriverUnresponsive'
+-    if alert is not None:
+-      events.append(create_event(alert, [ET.WARNING]))
+-
+     return events
+ 
+ 

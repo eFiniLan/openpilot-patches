@@ -1,0 +1,16 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/ui_tweak/remove_ui_cruise_speed.diff | git apply -v
+#
+# This patch remove set cruise speed icon
+#
+
+--- selfdrive/ui/ui.c
++++ selfdrive/ui/ui.c
+@@ -1294,7 +1294,7 @@ static void ui_draw_vision_header(UIState *s) {
+   nvgRect(s->vg, ui_viz_rx, box_y, ui_viz_rw, header_h);
+   nvgFill(s->vg);
+ 
+-  ui_draw_vision_maxspeed(s);
++//  ui_draw_vision_maxspeed(s);
+   ui_draw_vision_speedlimit(s);
+   ui_draw_vision_speed(s);
+   ui_draw_vision_event(s);

@@ -1,0 +1,16 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/ui_tweak/remove_ui_speed_limit.diff | git apply -v
+#
+# This patch remove speed limit icon sourced from OpenStreetMap
+#
+
+--- selfdrive/ui/ui.c
++++ selfdrive/ui/ui.c
+@@ -1295,7 +1295,7 @@ static void ui_draw_vision_header(UIState *s) {
+   nvgFill(s->vg);
+ 
+   ui_draw_vision_maxspeed(s);
+-  ui_draw_vision_speedlimit(s);
++//  ui_draw_vision_speedlimit(s);
+   ui_draw_vision_speed(s);
+   ui_draw_vision_event(s);
+ }

@@ -1,0 +1,19 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/do_not_auto_update_op.diff | git apply -v
+#
+# This patch remove auto update, suitable for custom fork users, most custom fork already have it.
+#
+
+--- launch_chffrplus.sh
++++ launch_chffrplus.sh
+@@ -6,11 +6,11 @@ fi
+ 
+ function launch {
+   # apply update
+-  if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
+-     git reset --hard @{u} &&
+-     git clean -xdf &&
+-     exec "${BASH_SOURCE[0]}"
+-  fi
+ 
+   # no cpu rationing for now
+   echo 0-3 > /dev/cpuset/background/cpus

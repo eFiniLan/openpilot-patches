@@ -1,0 +1,16 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/ui_tweak/remove_ui_steering_events_icon.diff | git apply -v
+#
+# The patch remove the top right icon (steering wheel icon or slow turn icon)
+#
+
+--- selfdrive/ui/ui.c
++++ selfdrive/ui/ui.c
+@@ -1297,7 +1297,7 @@ static void ui_draw_vision_header(UIState *s) {
+   ui_draw_vision_maxspeed(s);
+   ui_draw_vision_speedlimit(s);
+   ui_draw_vision_speed(s);
+-  ui_draw_vision_event(s);
++//  ui_draw_vision_event(s);
+ }
+ 
+ static void ui_draw_vision_footer(UIState *s) {

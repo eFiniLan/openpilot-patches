@@ -1,0 +1,20 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/gm/for_stock_acc_only_does_not_disable_op_on_gas_or_brake.diff | git apply -v
+#
+# (Suitable for Stock ACC)
+# This patch will disable OP disengagement when gas or brake is pressed.
+#
+
+--- selfdrive/car/gm/interface.py
++++ selfdrive/car/gm/interface.py
+@@ -316,11 +316,11 @@ class CarInterface(object):
+       if self.CS.park_brake:
+         events.append(create_event('parkBrake', [ET.NO_ENTRY, ET.USER_DISABLE]))
+-      # disable on pedals rising edge or when brake is pressed and speed isn't zero
+-      if (ret.gasPressed and not self.gas_pressed_prev) or \
+-        (ret.brakePressed): # and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
+-        events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
+-      if ret.gasPressed:
+-        events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+       if ret.cruiseState.standstill:
+         events.append(create_event('resumeRequired', [ET.WARNING]))
+ 
