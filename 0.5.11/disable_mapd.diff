@@ -1,20 +1,7 @@
 # cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/disable_mapd.diff | git apply -v
 #
 # This patch disable map entirely so OP won't request data from OpenStreetMap to reduce mobile data usage.
-# This patch will also remove map icon in the UI.
 #
-===================================================================
---- a/selfdrive/ui/ui.c
-+++ b/selfdrive/ui/ui.c
-@@ -1434,7 +1434,7 @@
-   nvgRect(s->vg, ui_viz_rx, footer_y, ui_viz_rw, footer_h);
-
-   ui_draw_vision_face(s);
--  ui_draw_vision_map(s);
-+//  ui_draw_vision_map(s);
- }
-
- static void ui_draw_vision_alert(UIState *s, int va_size, int va_color,
 ===================================================================
 --- a/selfdrive/manager.py
 +++ b/selfdrive/manager.py

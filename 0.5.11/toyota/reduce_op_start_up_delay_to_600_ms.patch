@@ -2,9 +2,9 @@
 #
 # This patch will reduce OP start up delay to 600 ms (was 1 second).
 #
-
---- selfdrive/car/car_helpers.py
-+++ selfdrive/car/car_helpers.py
+===================================================================
+--- a/selfdrive/car/car_helpers.py
++++ b/selfdrive/car/car_helpers.py
 @@ -71,7 +71,7 @@
      # broadcast immediately
      if len(candidate_cars) == 1 and st is not None:

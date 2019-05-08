@@ -1,20 +1,7 @@
 # cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/disable_driver_monitor.diff | git apply -v
 #
 # This patch prevents driver monitor sending warning events
-# This patch will also remove the face icon
 #
-===================================================================
---- a/selfdrive/ui/ui.c
-+++ b/selfdrive/ui/ui.c
-@@ -1433,7 +1433,7 @@
-   nvgBeginPath(s->vg);
-   nvgRect(s->vg, ui_viz_rx, footer_y, ui_viz_rw, footer_h);
-
--  ui_draw_vision_face(s);
-+//  ui_draw_vision_face(s);
-   ui_draw_vision_map(s);
- }
-
 ===================================================================
 --- a/selfdrive/controls/lib/driver_monitor.py
 +++ b/selfdrive/controls/lib/driver_monitor.py

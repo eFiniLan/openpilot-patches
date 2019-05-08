@@ -3,9 +3,10 @@
 # This patch remove current speed unit (kph or mph)
 #
 
---- selfdrive/ui/ui.c
-+++ selfdrive/ui/ui.c
-@@ -1163,15 +1163,15 @@ static void ui_draw_vision_speed(UIState *s) {
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
+@@ -1163,15 +1163,15 @@
+ static void ui_draw_vision_speed(UIState *s) {
    nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 255));
    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 240, speed_str, NULL);
  

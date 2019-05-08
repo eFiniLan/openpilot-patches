@@ -2,9 +2,9 @@
 #
 # This patch will increase steering torque from 1500 to 1800
 #
-
---- panda/board/safety/safety_toyota.h
-+++ panda/board/safety/safety_toyota.h
+===================================================================
+--- a/panda/board/safety/safety_toyota.h
++++ b/panda/board/safety/safety_toyota.h
 @@ -2,7 +2,7 @@
  int toyota_camera_forwarded = 0;          // should we forward the camera bus?
  
@@ -14,8 +14,9 @@
  
  // rate based torque limit + stay within actually applied
  // packet is sent at 100hz, so this limit is 1000/sec
---- selfdrive/car/toyota/carcontroller.py
-+++ selfdrive/car/toyota/carcontroller.py
+===================================================================
+--- a/selfdrive/car/toyota/carcontroller.py
++++ b/selfdrive/car/toyota/carcontroller.py
 @@ -21,7 +21,7 @@
  
  # Steer torque limits

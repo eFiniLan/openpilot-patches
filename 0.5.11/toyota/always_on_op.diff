@@ -5,9 +5,9 @@
 # 1. Disable safety check in safety_toyota.h
 # 2. Use generic toggle as OP switch
 #
-
---- panda/board/safety/safety_toyota.h
-+++ panda/board/safety/safety_toyota.h
+===================================================================
+--- a/panda/board/safety/safety_toyota.h
++++ b/panda/board/safety/safety_toyota.h
 @@ -48,16 +48,17 @@ static void toyota_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
    }
  
@@ -26,9 +26,9 @@
  
    int bus = (to_push->RDTR >> 4) & 0xF;
    // msgs are only on bus 2 if panda is connected to frc
-
---- selfdrive/car/toyota/carstate.py
-+++ selfdrive/car/toyota/carstate.py
+===================================================================
+--- a/selfdrive/car/toyota/carstate.py
++++ b/selfdrive/car/toyota/carstate.py
 @@ -170,3 +170,12 @@ class CarState(object):
        self.generic_toggle = cp.vl["AUTOPARK_STATUS"]['STATE'] != 0
      else:
