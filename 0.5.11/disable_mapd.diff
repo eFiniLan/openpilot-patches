@@ -3,9 +3,9 @@
 # This patch disable map entirely so OP won't request data from OpenStreetMap to reduce mobile data usage.
 # This patch will also remove map icon in the UI.
 #
-
---- selfdrive/ui/ui.c
-+++ selfdrive/ui/ui.c
+===================================================================
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
 @@ -1434,7 +1434,7 @@
    nvgRect(s->vg, ui_viz_rx, footer_y, ui_viz_rw, footer_h);
 
@@ -15,8 +15,9 @@
  }
 
  static void ui_draw_vision_alert(UIState *s, int va_size, int va_color,
---- selfdrive/manager.py
-+++ selfdrive/manager.py
+===================================================================
+--- a/selfdrive/manager.py
++++ b/selfdrive/manager.py
 @@ -92,7 +92,7 @@
    "plannerd": "selfdrive.controls.plannerd",
    "radard": "selfdrive.controls.radard",

@@ -3,9 +3,9 @@
 # This patch will redirect crash log to me (eFiniLan), allow me to diagnose any porting issue.
 # courtesy of Arne Schwarck (https://github.com/arne182/)
 #
-
---- selfdrive/crash.py
-+++ selfdrive/crash.py
+===================================================================
+--- a/selfdrive/crash.py
++++ b/selfdrive/crash.py
 @@ -18,8 +18,28 @@
  else:
    from raven import Client

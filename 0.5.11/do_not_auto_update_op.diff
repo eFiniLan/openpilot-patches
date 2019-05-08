@@ -2,7 +2,7 @@
 #
 # This patch remove auto update, suitable for custom fork users, most custom fork already have it.
 #
-
+===================================================================
 --- launch_chffrplus.sh
 +++ launch_chffrplus.sh
 @@ -6,11 +6,11 @@

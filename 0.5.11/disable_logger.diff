@@ -4,7 +4,7 @@
 # This will disable uploader, loggerd, logmessaged, logcatd, tombstoned, proclogd
 # ** You will not get any comma points in the future if you apply this patch. **
 #
-
+===================================================================
 --- launch_openpilot.sh
 +++ launch_openpilot.sh
 @@ -1,5 +1,6 @@

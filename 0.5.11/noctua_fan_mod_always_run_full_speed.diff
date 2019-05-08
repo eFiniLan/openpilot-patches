@@ -3,9 +3,9 @@
 # This patch set fan speed to max (65535), suitable for EONs with Noctua fan mode
 # courtesy of Erich Moraga (https://github.com/ErichMoraga/)
 #
-
---- selfdrive/thermald.py
-+++ selfdrive/thermald.py
+===================================================================
+--- a/selfdrive/thermald.py
++++ b/selfdrive/thermald.py
 @@ -80,9 +80,9 @@
  # temp thresholds to control fan speed - low hysteresis
  _TEMP_THRS_L = [42.5, 57.5, 72.5, 10000]
