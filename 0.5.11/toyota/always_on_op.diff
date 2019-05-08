@@ -5,12 +5,15 @@
 # 1. Disable safety check in safety_toyota.h
 # 2. Use generic toggle as OP switch
 #
+# ** This will require panda re-flash **
+# cd /data/openpilot/panda && pkill -f boardd && PYTHONPATH=.. python -c "from panda import Panda; Panda().flash()" && PYTHONPATH=.. python -c "from panda import Panda; Panda().flash()"
+#
 ===================================================================
 --- a/panda/board/safety/safety_toyota.h
 +++ b/panda/board/safety/safety_toyota.h
-@@ -48,16 +48,17 @@ static void toyota_rx_hook(CAN_FIFOMailBox_TypeDef *to_push) {
+@@ -48,16 +48,17 @@
    }
- 
+
    // enter controls on rising edge of ACC, exit controls on ACC off
 -  if ((to_push->RIR>>21) == 0x1D2) {
 -    // 5th bit is CRUISE_ACTIVE
@@ -22,14 +25,24 @@
 -    }
 -    toyota_cruise_engaged_last = cruise_engaged;
 -  }
++//  if ((to_push->RIR>>21) == 0x1D2) {
++//    // 5th bit is CRUISE_ACTIVE
++//    int cruise_engaged = to_push->RDLR & 0x20;
++//    if (cruise_engaged && !toyota_cruise_engaged_last) {
++//      controls_allowed = 1;
++//    } else if (!cruise_engaged) {
++//      controls_allowed = 0;
++//    }
++//    toyota_cruise_engaged_last = cruise_engaged;
++//  }
 +  controls_allowed = 1;
- 
+
    int bus = (to_push->RDTR >> 4) & 0xF;
    // msgs are only on bus 2 if panda is connected to frc
 ===================================================================
 --- a/selfdrive/car/toyota/carstate.py
 +++ b/selfdrive/car/toyota/carstate.py
-@@ -170,3 +170,12 @@ class CarState(object):
+@@ -170,3 +170,12 @@
        self.generic_toggle = cp.vl["AUTOPARK_STATUS"]['STATE'] != 0
      else:
        self.generic_toggle = bool(cp.vl["LIGHT_STALK"]['AUTO_HIGH_BEAM'])
@@ -42,4 +55,3 @@
 +      else:
 +        # self.pcm_acc_active = True
 +        self.pcm_acc_status = 1
-
