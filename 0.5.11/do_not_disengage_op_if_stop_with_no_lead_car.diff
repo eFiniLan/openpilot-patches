@@ -5,12 +5,15 @@
 
 --- selfdrive/controls/controlsd.py
 +++ selfdrive/controls/controlsd.py
-@@ -488,8 +488,8 @@ def controlsd_thread(gctx=None, rate=100):
+@@ -494,8 +494,8 @@
      events += list(plan.plan.events)
- 
--    # Only allow engagement with brake pressed when stopped behind another stopped car
+
+     # Only allow engagement with brake pressed when stopped behind another stopped car
 -    if CS.brakePressed and plan.plan.vTargetFuture >= STARTING_TARGET_SPEED and not CP.radarOffCan and CS.vEgo < 0.3:
 -      events.append(create_event('noTarget', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE]))
- 
++    # if CS.brakePressed and plan.plan.vTargetFuture >= STARTING_TARGET_SPEED and not CP.radarOffCan and CS.vEgo < 0.3:
++    #   events.append(create_event('noTarget', [ET.NO_ENTRY, ET.IMMEDIATE_DISABLE]))
+
      if not passive:
        # update control state
+
