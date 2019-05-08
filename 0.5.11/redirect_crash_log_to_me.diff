@@ -6,19 +6,16 @@
 
 --- selfdrive/crash.py
 +++ selfdrive/crash.py
-@@ -18,8 +18,35 @@ if os.getenv("NOLOG") or os.getenv("NOCRASH"):
+@@ -18,8 +18,28 @@
  else:
    from raven import Client
    from raven.transport.http import HTTPTransport
 -  client = Client('https://1994756b5e6f41cf939a4c65de45f4f2:cefebaf3a8aa40d182609785f7189bd7@app.getsentry.com/77924',
 -                  install_sys_hook=False, transport=HTTPTransport, release=version, tags={'dirty': dirty})
-+
 +  with open("/data/openpilot/.git/HEAD", "r") as f:
 +    content = f.read().split(' ')
 +  branch = content[1]
-+
 +  error_tags = {'dirty': dirty, 'branch': branch}
-+
 +  try:
 +    with open("/data/data/ai.comma.plus.offroad/files/persistStore/persist-auth", "r") as f:
 +      auth = json.loads(f.read())
@@ -27,21 +24,16 @@
 +    error_tags['email'] = auth['email']
 +  except:
 +    pass
-+
 +  client = Client('https://fa39b8804ae94ea6bbb22279d68b3dc7:5ac1b337f7be42308cabbb534b342669@sentry.io/1428745',
 +                  install_sys_hook=False, transport=HTTPTransport, release=version, tags=error_tags)
-+
 +  try:
 +    client.user_context(error_tags['username'])
 +  except:
 +    pass
-+
 +  def capture_warning(warning_string):
 +    client.captureMessage(warning_string, level='warning')
-+
 +  def capture_info(info_string):
 +    client.captureMessage(info_string, level='info')
- 
+
    def capture_exception(*args, **kwargs):
      client.captureException(*args, **kwargs)
-
