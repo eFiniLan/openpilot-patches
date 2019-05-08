@@ -3,9 +3,9 @@
 # This patch adds a timer to uploader.py that allows your EON shutdown after 60 mins of inactivity (not uploading + not compressing),
 # to adjust shutdown time, change shutdown_at = 3600 value (60 secs * 60 mins = 3600 secs).
 #
-
---- selfdrive/loggerd/uploader.py
-+++ selfdrive/loggerd/uploader.py
+===================================================================
+--- a/selfdrive/loggerd/uploader.py
++++ b/selfdrive/loggerd/uploader.py
 @@ -264,6 +264,8 @@
  
  def uploader_fn(exit_event):
