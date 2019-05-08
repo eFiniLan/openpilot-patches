@@ -22,28 +22,13 @@
 -    }
 -    toyota_cruise_engaged_last = cruise_engaged;
 -  }
-+//  if ((to_push->RIR>>21) == 0x1D2) {
-+//    // 5th bit is CRUISE_ACTIVE
-+//    int cruise_engaged = to_push->RDLR & 0x20;
-+//    if (cruise_engaged && !toyota_cruise_engaged_last) {
-+//      controls_allowed = 1;
-+//    } else if (!cruise_engaged) {
-+//      controls_allowed = 0;
-+//    }
-+//    toyota_cruise_engaged_last = cruise_engaged;
-+//  }
 +  controls_allowed = 1;
  
    int bus = (to_push->RDTR >> 4) & 0xF;
    // msgs are only on bus 2 if panda is connected to frc
 
- selfdrive/car/toyota/carstate.py | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/selfdrive/car/toyota/carstate.py b/selfdrive/car/toyota/carstate.py
-index bb3b3f05..80ec37ea
---- a/selfdrive/car/toyota/carstate.py
-+++ b/selfdrive/car/toyota/carstate.py
+--- selfdrive/car/toyota/carstate.py
++++ selfdrive/car/toyota/carstate.py
 @@ -170,3 +170,12 @@ class CarState(object):
        self.generic_toggle = cp.vl["AUTOPARK_STATUS"]['STATE'] != 0
      else:

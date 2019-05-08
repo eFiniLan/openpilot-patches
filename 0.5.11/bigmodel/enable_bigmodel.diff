@@ -1,4 +1,4 @@
-# cd /data/openpilot && curl -o models/driving_bigmodel.dlc https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/bigmodel/driving_bigmodel.dlc && md5sum -c <<< "da20c5670e044bf6ea1dbd8dee73d7fe models/driving_bigmodel.dlc" && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.10/bigmodel/enable_bigmodel.diff | git apply -v
+# cd /data/openpilot && curl -o models/driving_bigmodel.dlc https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/bigmodel/driving_bigmodel.dlc && md5sum -c <<< "da20c5670e044bf6ea1dbd8dee73d7fe models/driving_bigmodel.dlc" && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/bigmodel/enable_bigmodel.diff | git apply -v
 #
 # driving_bigmodel.dlc checksum: da20c5670e044bf6ea1dbd8dee73d7fe
 #
