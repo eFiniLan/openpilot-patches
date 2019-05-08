@@ -4,8 +4,8 @@
 # This patch will also remove the face icon
 #
 ===================================================================
---- selfdrive/ui/ui.c
-+++ selfdrive/ui/ui.c
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
 @@ -1433,7 +1433,7 @@
    nvgBeginPath(s->vg);
    nvgRect(s->vg, ui_viz_rx, footer_y, ui_viz_rw, footer_h);
@@ -16,8 +16,8 @@
  }
 
 ===================================================================
---- selfdrive/controls/lib/driver_monitor.py
-+++ selfdrive/controls/lib/driver_monitor.py
+--- a/selfdrive/controls/lib/driver_monitor.py
++++ b/selfdrive/controls/lib/driver_monitor.py
 @@ -154,8 +154,8 @@
      elif self.awareness <= self.threshold_pre:
        # pre green alert
