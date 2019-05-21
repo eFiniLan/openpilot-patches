@@ -6,7 +6,7 @@
 ===================================================================
 --- a/selfdrive/car/toyota/interface.py
 +++ b/selfdrive/car/toyota/interface.py
-@@ -346,12 +346,12 @@
+@@ -393,12 +393,12 @@
        events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
 
      # disable on pedals rising edge or when brake is pressed and speed isn't zero
@@ -22,6 +22,6 @@
 +    #
 +    # if ret.gasPressed:
 +    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
- 
+
      ret.events = events
      ret.canMonoTimes = canMonoTimes

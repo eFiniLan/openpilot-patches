@@ -1,0 +1,43 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/auto_shutdown/shut_down_eon_after_60_mins_if_uploader_stop_processing.diff | git apply -v
+#
+# This patch adds a timer to uploader.py that allows your EON shutdown after 60 mins of inactivity (not uploading + not compressing),
+# to adjust shutdown time, change shutdown_at = 3600 value (60 secs * 60 mins = 3600 secs).
+#
+===================================================================
+--- a/selfdrive/loggerd/uploader.py
++++ b/selfdrive/loggerd/uploader.py
+@@ -264,6 +264,8 @@
+ 
+ def uploader_fn(exit_event):
+   cloudlog.info("uploader_fn")
++  shutdown_at = 3600 # 60 mins
++  shutdown_count = 0
+ 
+   params = Params()
+   dongle_id, access_token = params.get("DongleId"), params.get("AccessToken")
+@@ -288,17 +290,24 @@
+     if d is not None:
+       key, fn, _ = d
+       uploader.compress(key, fn)
++      shutdown_count = 0
+       continue
+ 
++    if shutdown_count > shutdown_at:
++      os.system('LD_LIBRARY_PATH="" svc power shutdown')
++
+     if not should_upload:
++      shutdown_count += 5
+       time.sleep(5)
+       continue
+ 
+     d = uploader.next_file_to_upload(with_video=True)
+     if d is None:
++      shutdown_count += 5
+       time.sleep(5)
+       continue
+ 
++    shutdown_count = 0
+     key, fn, _ = d
+ 
+     cloudlog.event("uploader_netcheck", allow_cellular=allow_cellular, is_on_hotspot=on_hotspot, is_on_wifi=on_wifi)
+

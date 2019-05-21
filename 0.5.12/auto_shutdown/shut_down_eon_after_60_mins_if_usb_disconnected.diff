@@ -1,0 +1,49 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/auto_shutdown/shut_down_eon_after_60_mins_if_usb_disconnected.diff | git apply -v
+#
+# This patch adds a timer to thermald.py that allows your EON shutdown after 90 mins of inactivity (no power through USB),
+# to adjust shutdown time, change _SHUTDOWN_AT = 3600 value (60 secs * 60 mins = 3600 secs).
+#
+===================================================================
+--- a/selfdrive/thermald.py
++++ b/selfdrive/thermald.py
+@@ -83,7 +83,8 @@
+ _FAN_SPEEDS = [0, 16384, 32768, 65535]
+ # max fan speed only allowed if battery is hot
+ _BAT_TEMP_THERSHOLD = 45.
+-
++# shutdown timer 60 mins (60sec x 60mins)
++_SHUTDOWN_AT = 3600
+ 
+ def handle_fan(max_cpu_temp, bat_temp, fan_speed):
+   new_speed_h = next(speed for speed, temp_h in zip(_FAN_SPEEDS, _TEMP_THRS_H) if temp_h > max_cpu_temp)
+@@ -165,6 +166,7 @@
+   location_sock = messaging.sub_sock(context, service_list['gpsLocation'].port)
+   fan_speed = 0
+   count = 0
++  shutdown_count = 0
+
+   off_ts = None
+   started_ts = None
+@@ -203,6 +205,7 @@
+       msg.thermal.batteryVoltage = int(f.read())
+     with open("/sys/class/power_supply/usb/present") as f:
+       msg.thermal.usbOnline = bool(int(f.read()))
++      usb_online = msg.thermal.usbOnline
+
+     current_filter.update(msg.thermal.batteryCurrent / 1e6)
+
+@@ -311,6 +314,14 @@
+ 
+     count += 1
+ 
++    # shut down EON if usb is not present after certain time
++    if not usb_online:
++      shutdown_count += 1
++    else:
++      shutdown_count = 0
++
++    if shutdown_count >= _SHUTDOWN_AT:
++      os.system('LD_LIBRARY_PATH="" svc power shutdown')
+ 
+ def main(gctx=None):
+   thermald_thread()
