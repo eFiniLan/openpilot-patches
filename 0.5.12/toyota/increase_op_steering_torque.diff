@@ -1,0 +1,30 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/toyota/increase_op_steering_torque.diff | git apply -v
+#
+# This patch will increase steering torque from 1500 to 1800
+# ** This will require panda re-flash **
+# cd /data/openpilot/panda && pkill -f boardd && PYTHONPATH=.. python -c "from panda import Panda; Panda().flash()" && PYTHONPATH=.. python -c "from panda import Panda; Panda().flash()"
+#
+===================================================================
+--- a/selfdrive/car/toyota/carcontroller.py
++++ b/selfdrive/car/toyota/carcontroller.py
+@@ -21,7 +21,7 @@
+
+ # Steer torque limits
+ class SteerLimitParams:
+-  STEER_MAX = 1500
++  STEER_MAX = 1800
+   STEER_DELTA_UP = 10       # 1.5s time to peak torque
+   STEER_DELTA_DOWN = 25     # always lower than 45 otherwise the Rav4 faults (Prius seems ok with 50)
+   STEER_ERROR_MAX = 350     # max delta between torque cmd and torque motor
+===================================================================
+--- a/panda/board/safety/safety_toyota.h
++++ b/panda/board/safety/safety_toyota.h
+@@ -2,7 +2,7 @@
+ int toyota_camera_forwarded = 0;          // should we forward the camera bus?
+
+ // global torque limit
+-const int TOYOTA_MAX_TORQUE = 1500;       // max torque cmd allowed ever
++const int TOYOTA_MAX_TORQUE = 1800;       // max torque cmd allowed ever
+
+ // rate based torque limit + stay within actually applied
+ // packet is sent at 100hz, so this limit is 1000/sec

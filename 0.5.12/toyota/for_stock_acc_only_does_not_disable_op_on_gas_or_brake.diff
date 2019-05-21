@@ -1,0 +1,27 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/toyota/for_stock_acc_only_does_not_disable_op_on_gas_or_brake.diff | git apply -v
+#
+# (Suitable for Stock ACC)
+# This patch will disable OP disengagement when gas or brake is pressed.
+#
+===================================================================
+--- a/selfdrive/car/toyota/interface.py
++++ b/selfdrive/car/toyota/interface.py
+@@ -346,12 +346,12 @@
+       events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
+
+     # disable on pedals rising edge or when brake is pressed and speed isn't zero
+-    if (ret.gasPressed and not self.gas_pressed_prev) or \
+-       (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
+-      events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
+-
+-    if ret.gasPressed:
+-      events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
++    # if (ret.gasPressed and not self.gas_pressed_prev) or \
++    #    (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
++    #   events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
++    #
++    # if ret.gasPressed:
++    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+ 
+     ret.events = events
+     ret.canMonoTimes = canMonoTimes
