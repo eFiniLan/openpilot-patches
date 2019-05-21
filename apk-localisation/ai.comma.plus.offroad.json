@@ -1,0 +1,238 @@
+[
+  {
+    "en": "\"Welcome to openpilot alpha\"",
+    "zh-TW": "\"歡迎用 openpilot alpha 版\""
+  },
+  {
+    "en": "\"New Drive\"",
+    "zh-TW": "\"新的行車記錄\""
+  },
+  {
+    "en": "\"EON Paired\"",
+    "zh-TW": "\"EON 已配對\""
+  },
+  {
+    "en": ",\"Settings\"",
+    "zh-TW": ",\"設定\""
+  },
+  {
+    "en": "title:\"Account\"",
+    "zh-TW": "title:\"帳號\""
+  },
+  {
+    "en": "title:\"Username\"",
+    "zh-TW": "title:\"用戶名\""
+  },
+  {
+    "en": "title:\"Email\"",
+    "zh-TW": "title:\"Email\""
+  },
+  {
+    "en": "title:\"comma Points\"",
+    "zh-TW": "title:\"comma 點數\""
+  },
+  {
+    "en": "title:\"Device Paired\"",
+    "zh-TW": "title:\"裝置已配對\""
+  },
+  {
+    "en": "\"Log out\"",
+    "zh-TW": "\"登出\""
+  },
+  {
+    "en": "\"Are you sure you want to log out?\"",
+    "zh-TW": "\"您確定您要登出嗎?\""
+  },
+  {
+    "en": "\"<  Account Settings\"",
+    "zh-TW": "\"<  帳號設定\""
+  },
+  {
+    "en": "title:\"Device\"",
+    "zh-TW": "title:\"裝置\""
+  },
+  {
+    "en": "title:\"Camera Calibration\"",
+    "zh-TW": "title:\"相機校準\""
+  },
+  {
+    "en": "The calibration algorithm is always active on the road facing camera. Resetting calibration is only advised when EON reports an invalid calibration alert or when EON is remounted in a different position.",
+    "zh-TW": "相機的校準算法是一直開啟的。只有當您的 EON 發出校準無效的訊息或是您將 EON 安裝至不同的位置/車子時，才需要重設校準。"
+  },
+  {
+    "en": ",\"Reset\"",
+    "zh-TW": ",\"重設\""
+  },
+  {
+    "en": "title:\"Dongle ID\"",
+    "zh-TW": "title:\"Dongle ID\""
+  },
+  {
+    "en": "title:\"Serial Number\"",
+    "zh-TW": "title:\"序號\""
+  },
+  {
+    "en": "title:\"Storage Available\"",
+    "zh-TW": "title:\"剩餘儲存空間\""
+  },
+  {
+    "en": "title:\"Pending Uploads Size\"",
+    "zh-TW": "title:\"等待上傳記錄\""
+  },
+  {
+    "en": "title:\"Upload Speed\"",
+    "zh-TW": "title:\"上傳速度\""
+  },
+  {
+    "en": ",\"Open Date and Time Settings\"",
+    "zh-TW": ",\"開啟日期/時間設定\""
+  },
+  {
+    "en": "\"<  Device Settings\"",
+    "zh-TW": "\"<  裝置設定\""
+  },
+  {
+    "en": "title:\"Network\"",
+    "zh-TW": "title:\"網路\""
+  },
+  {
+    "en": "\"<  Network Settings\"",
+    "zh-TW": "\"<  網路設定\""
+  },
+  {
+    "en": "title:\"Enable Upload Over Cellular\"",
+    "zh-TW": "title:\"允許使用手機網路上傳記錄\""
+  },
+  {
+    "en": "Upload driving data over cellular connection if a sim card is used and no wifi network is available. If you have a limited data plan, you might incur in surcharges.",
+    "zh-TW": "當您的 EON 有安裝 SIM 卡卻沒有無線網路連線時，這個選項將允許 EON 使用手機網路上傳記錄。如果您非使用吃到飽方案，您可能需付額外的費用。"
+  },
+  {
+    "en": "\"Open WiFi Settings\"",
+    "zh-TW": "開啟無線網路設定"
+  },
+  {
+    "en": "\"Open Bluetooth Settings\"",
+    "zh-TW": "\"開啟藍芽設定\""
+  },
+  {
+    "en": "\"Open Tethering Settings\"",
+    "zh-TW": "\"開啟熱點設定\""
+  },
+  {
+    "en": "title:\"Developer\"",
+    "zh-TW": "title:\"開發者\""
+  },
+  {
+    "en": "\"<  Developer Settings\"",
+    "zh-TW": "\"<  開發者設定\""
+  },
+  {
+    "en": "title:\"Version\"",
+    "zh-TW": "title:\"版本\""
+  },
+  {
+    "en": "title:\"Git Branch\"",
+    "zh-TW": "title:\"Git 分支\""
+  },
+  {
+    "en": "title:\"Git Revision\"",
+    "zh-TW": "title:\"Git 修訂版\""
+  },
+  {
+    "en": "title:\"Enable SSH\"",
+    "zh-TW": "title:\"啟用 SSH\""
+  },
+  {
+    "en": "Allow devices to connect to your EON using Secure Shell (SSH).",
+    "zh-TW": "允許別的裝置經由 Secure Shell (SSH) 連線至您的 EON。"
+  },
+  {
+    "en": "\"Uninstall \"",
+    "zh-TW": "\"卸載 \""
+  },
+  {
+    "en": "\"Uninstall\"",
+    "zh-TW": "\"卸載\""
+  },
+  {
+    "en": "\"Are you sure you want to uninstall?\"",
+    "zh-TW": "\"您確定您要卸載嗎?\""
+  },
+  {
+    "en": "\"Cancel\"",
+    "zh-TW": "\"取消\""
+  },
+  {
+    "en": "title:\"Enable Driver Monitoring\"",
+    "zh-TW": "title:\"啟用駕駛監控\""
+  },
+  {
+    "en": "Driver Monitoring detects driver awareness with 3D facial reconstruction and pose estimation. It is used to warn the driver when they appear distracted while openpilot is engaged. This feature is still in beta, so Driver Monitoring is unavailable when the facial tracking is too inaccurate (e.g. at night). The availability is indicated by the face icon at the bottom-left corner of your EON.",
+    "zh-TW": "駕駛監控系統利用 3D 面部重建以及姿𫝑估算來檢測駕駛的狀態。當 openpilot 啟用時，它會在駕駛分心時發出警示。這個功能仍然在測試階段，所以監控會在無法正確識別時暫時取消 (例如光線不足時)。您可以從 EON 左下角的人臉圖示來判斷它的狀態。"
+  },
+  {
+    "en": "title:\"Record and Upload Driver Camera\"",
+    "zh-TW": "title:\"錄制並上傳駕駛的錄像\""
+  },
+  {
+    "en": "Upload data from the driver facing camera and help improve the Driver Monitoring algorithm.",
+    "zh-TW": "上傳前置相機的錄像以提升駕駛監控的算法。"
+  },
+  {
+    "en": "title:\"Enable Forward Collision Warning\"",
+    "zh-TW": "title:\"啟用前方碰撞預警\""
+  },
+  {
+    "en": "Use visual and acoustic warnings when risk of forward collision is detected.",
+    "zh-TW": "當檢測到前方有碰撞的風險時，使用視覺和音效來警示。"
+  },
+  {
+    "en": "title:\"Use Metric System\"",
+    "zh-TW": "title:\"使用公/米制單位\""
+  },
+  {
+    "en": "Display speed in km/h instead of mp/h and temperature in \\xb0C instead of \\xb0F.",
+    "zh-TW": "開啟時，顯示 km/h (速度) 或 \\xb0C (溫度)，關閉時，顯示 mph (速度) 或 \\xb0F (溫度)。"
+  },
+  {
+    "en": "title:\"Add Speed Limit Offset\"",
+    "zh-TW": "title:\"速限補償\""
+  },
+  {
+    "en": "Customize the default speed limit warning with an offset in km/h or mph above the posted legal limit when available",
+    "zh-TW": "當 EON 從圖資讀到路段速限時，您可以利用速限補償來微調定速 (單位是 km/h 或 mph)"
+  },
+  {
+    "en": "title:\"Use Map To Control Vehicle Speed\"",
+    "zh-TW": "title:\"使用圖資控制車速\""
+  },
+  {
+    "en": "Use map data to control the vehicle speed. A curvy road icon appears when the car automatically slows down for upcoming turns. The vehicle speed is also limited by the posted legal limit, when available, including the custom offset. This feature is only available for cars where openpilot manages longitudinal control and when EON has internet connectivity. The map icon appears when map data are downloaded.",
+    "zh-TW": "使用圖資來控制當前的車速。當您見到一個彎道圖示時，代表車子將會自動減速來過前方的彎道。當取得圖資資料後，車速將被限制在圖資上的速限 (外加速限補償設置)。這功能需要有網路連線以及能讓 openpilot 縱向控制的對應車種。當圖資下載完成後，您將會看到一個地圖圖示。"
+  },
+  {
+    "en": "Review Training Guide",
+    "zh-TW": "查看使用指南"
+  },
+  {
+    "en": "\"Reboot\"",
+    "zh-TW": "\"重新啟動\""
+  },
+  {
+    "en": "\"Are you sure you want to reboot?\"",
+    "zh-TW": "\"您確定您要重新啟動嗎?\""
+  },
+  {
+    "en": "\"Power Off\"",
+    "zh-TW": "\"關機\""
+  },
+  {
+    "en": "\"Are you sure you want to shutdown?\"",
+    "zh-TW": "\"您確定您要關機嗎?\""
+  },
+  {
+    "en": "\"Shutdown\"",
+    "zh-TW": "\"關機\""
+  }
+]
