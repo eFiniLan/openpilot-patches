@@ -1,11 +1,15 @@
 [
   {
     "en": "\"Welcome to openpilot alpha\"",
-    "zh-TW": "\"歡迎用 openpilot alpha 版\""
+    "zh-TW": "\"歡迎使用 openpilot alpha 版\""
   },
   {
     "en": "\"New Drive\"",
     "zh-TW": "\"新的行車記錄\""
+  },
+  {
+    "en": "\"<  Pair EON\"",
+    "zh-TW": "\"<  配對 EON\""
   },
   {
     "en": "\"EON Paired\"",
@@ -14,6 +18,10 @@
   {
     "en": ",\"Settings\"",
     "zh-TW": ",\"設定\""
+  },
+  {
+    "en": "\"<  Settings\"",
+    "zh-TW": "\"<  設定\""
   },
   {
     "en": "title:\"Account\"",
@@ -41,7 +49,7 @@
   },
   {
     "en": "\"Are you sure you want to log out?\"",
-    "zh-TW": "\"您確定您要登出嗎?\""
+    "zh-TW": "\"您確定要登出嗎?\""
   },
   {
     "en": "\"<  Account Settings\"",
@@ -56,8 +64,8 @@
     "zh-TW": "title:\"相機校準\""
   },
   {
-    "en": "The calibration algorithm is always active on the road facing camera. Resetting calibration is only advised when EON reports an invalid calibration alert or when EON is remounted in a different position.",
-    "zh-TW": "相機的校準算法是一直開啟的。只有當您的 EON 發出校準無效的訊息或是您將 EON 安裝至不同的位置/車子時，才需要重設校準。"
+    "en": "\"The calibration algorithm is always active on the road facing camera. Resetting calibration is only advised when EON reports an invalid calibration alert or when EON is remounted in a different position.\"",
+    "zh-TW": "\"相機的校準算法是一直開啟的。只有當您的 EON 發出校準無效的訊息或是您將 EON 安裝至不同的位置/車子時，才需要重設校準。\""
   },
   {
     "en": ",\"Reset\"",
@@ -104,12 +112,12 @@
     "zh-TW": "title:\"允許使用手機網路上傳記錄\""
   },
   {
-    "en": "Upload driving data over cellular connection if a sim card is used and no wifi network is available. If you have a limited data plan, you might incur in surcharges.",
-    "zh-TW": "當您的 EON 有安裝 SIM 卡卻沒有無線網路連線時，這個選項將允許 EON 使用手機網路上傳記錄。如果您非使用吃到飽方案，您可能需付額外的費用。"
+    "en": "\"Upload driving data over cellular connection if a sim card is used and no wifi network is available. If you have a limited data plan, you might incur in surcharges.\"",
+    "zh-TW": "\"當您的 EON 有安裝 SIM 卡卻沒有無線網路連線時，這個選項將允許 EON 使用手機網路上傳記錄。如果您非使用吃到飽方案，您可能需付額外的費用。\""
   },
   {
     "en": "\"Open WiFi Settings\"",
-    "zh-TW": "開啟無線網路設定"
+    "zh-TW": "\"開啟無線網路設定\""
   },
   {
     "en": "\"Open Bluetooth Settings\"",
@@ -121,11 +129,11 @@
   },
   {
     "en": "title:\"Developer\"",
-    "zh-TW": "title:\"開發者\""
+    "zh-TW": "title:\"開發人員\""
   },
   {
     "en": "\"<  Developer Settings\"",
-    "zh-TW": "\"<  開發者設定\""
+    "zh-TW": "\"<  開發人員設定\""
   },
   {
     "en": "title:\"Version\"",
@@ -144,8 +152,8 @@
     "zh-TW": "title:\"啟用 SSH\""
   },
   {
-    "en": "Allow devices to connect to your EON using Secure Shell (SSH).",
-    "zh-TW": "允許別的裝置經由 Secure Shell (SSH) 連線至您的 EON。"
+    "en": "\"Allow devices to connect to your EON using Secure Shell (SSH).\"",
+    "zh-TW": "\"允許別的裝置經由 Secure Shell (SSH) 連線至您的 EON。\""
   },
   {
     "en": "\"Uninstall \"",
@@ -157,7 +165,7 @@
   },
   {
     "en": "\"Are you sure you want to uninstall?\"",
-    "zh-TW": "\"您確定您要卸載嗎?\""
+    "zh-TW": "\"您確定要卸載嗎?\""
   },
   {
     "en": "\"Cancel\"",
@@ -168,52 +176,52 @@
     "zh-TW": "title:\"啟用駕駛監控\""
   },
   {
-    "en": "Driver Monitoring detects driver awareness with 3D facial reconstruction and pose estimation. It is used to warn the driver when they appear distracted while openpilot is engaged. This feature is still in beta, so Driver Monitoring is unavailable when the facial tracking is too inaccurate (e.g. at night). The availability is indicated by the face icon at the bottom-left corner of your EON.",
-    "zh-TW": "駕駛監控系統利用 3D 面部重建以及姿𫝑估算來檢測駕駛的狀態。當 openpilot 啟用時，它會在駕駛分心時發出警示。這個功能仍然在測試階段，所以監控會在無法正確識別時暫時取消 (例如光線不足時)。您可以從 EON 左下角的人臉圖示來判斷它的狀態。"
+    "en": "\"Driver Monitoring detects driver awareness with 3D facial reconstruction and pose estimation. It is used to warn the driver when they appear distracted while openpilot is engaged. This feature is still in beta, so Driver Monitoring is unavailable when the facial tracking is too inaccurate (e.g. at night). The availability is indicated by the face icon at the bottom-left corner of your EON.\"",
+    "zh-TW": "\"駕駛監控系統利用 3D 人臉/姿態識別來判斷駕駛的狀態。當 openpilot 啟用時，它會在駕駛分心時發出警示。這個功能仍然在測試階段，所以監控會在無法正確識別時暫時取消 (例如光線不足時)。您可以從 EON 左下角的人臉圖示來判斷它的狀態。\""
   },
   {
     "en": "title:\"Record and Upload Driver Camera\"",
     "zh-TW": "title:\"錄制並上傳駕駛的錄像\""
   },
   {
-    "en": "Upload data from the driver facing camera and help improve the Driver Monitoring algorithm.",
-    "zh-TW": "上傳前置相機的錄像以提升駕駛監控的算法。"
+    "en": "\"Upload data from the driver facing camera and help improve the Driver Monitoring algorithm.\"",
+    "zh-TW": "\"上傳前置相機的錄像來協助我們提升駕駛監控的準確率。\""
   },
   {
     "en": "title:\"Enable Forward Collision Warning\"",
     "zh-TW": "title:\"啟用前方碰撞預警\""
   },
   {
-    "en": "Use visual and acoustic warnings when risk of forward collision is detected.",
-    "zh-TW": "當檢測到前方有碰撞的風險時，使用視覺和音效來警示。"
+    "en": "\"Use visual and acoustic warnings when risk of forward collision is detected.\"",
+    "zh-TW": "\"當檢測到前方有碰撞的風險時，使用視覺和音效來警示。\""
   },
   {
     "en": "title:\"Use Metric System\"",
     "zh-TW": "title:\"使用公/米制單位\""
   },
   {
-    "en": "Display speed in km/h instead of mp/h and temperature in \\xb0C instead of \\xb0F.",
-    "zh-TW": "開啟時，顯示 km/h (速度) 或 \\xb0C (溫度)，關閉時，顯示 mph (速度) 或 \\xb0F (溫度)。"
+    "en": "\"Display speed in km/h instead of mp/h and temperature in \\xb0C instead of \\xb0F.\"",
+    "zh-TW": "\"開啟時，顯示 km/h (速度) 或 \\xb0C (溫度)，關閉時，顯示 mph (速度) 或 \\xb0F (溫度)。\""
   },
   {
     "en": "title:\"Add Speed Limit Offset\"",
     "zh-TW": "title:\"速限補償\""
   },
   {
-    "en": "Customize the default speed limit warning with an offset in km/h or mph above the posted legal limit when available",
-    "zh-TW": "當 EON 從圖資讀到路段速限時，您可以利用速限補償來微調定速 (單位是 km/h 或 mph)"
+    "en": "\"Customize the default speed limit warning with an offset in km/h or mph above the posted legal limit when available\"",
+    "zh-TW": "\"當 EON 從圖資讀到路段速限時，您可以利用速限補償來微調定速 (單位是 km/h 或 mph)\""
   },
   {
     "en": "title:\"Use Map To Control Vehicle Speed\"",
     "zh-TW": "title:\"使用圖資控制車速\""
   },
   {
-    "en": "Use map data to control the vehicle speed. A curvy road icon appears when the car automatically slows down for upcoming turns. The vehicle speed is also limited by the posted legal limit, when available, including the custom offset. This feature is only available for cars where openpilot manages longitudinal control and when EON has internet connectivity. The map icon appears when map data are downloaded.",
-    "zh-TW": "使用圖資來控制當前的車速。當您見到一個彎道圖示時，代表車子將會自動減速來過前方的彎道。當取得圖資資料後，車速將被限制在圖資上的速限 (外加速限補償設置)。這功能需要有網路連線以及能讓 openpilot 縱向控制的對應車種。當圖資下載完成後，您將會看到一個地圖圖示。"
+    "en": "\"Use map data to control the vehicle speed. A curvy road icon appears when the car automatically slows down for upcoming turns. The vehicle speed is also limited by the posted legal limit, when available, including the custom offset. This feature is only available for cars where openpilot manages longitudinal control and when EON has internet connectivity. The map icon appears when map data are downloaded.\"",
+    "zh-TW": "\"使用圖資來控制當前的車速。當您見到一個彎道圖示時，代表車子將會自動減速來過前方的彎道。當取得圖資資料後，車速將被限制在圖資上的速限 (外加速限補償設置)。這功能需要有網路連線以及能讓 openpilot 橫向控制的對應車種。當圖資下載完成後，您將會看到一個地圖圖示。\""
   },
   {
-    "en": "Review Training Guide",
-    "zh-TW": "查看使用指南"
+    "en": "\"Review Training Guide\"",
+    "zh-TW": "\"查看使用指南\""
   },
   {
     "en": "\"Reboot\"",
@@ -221,7 +229,7 @@
   },
   {
     "en": "\"Are you sure you want to reboot?\"",
-    "zh-TW": "\"您確定您要重新啟動嗎?\""
+    "zh-TW": "\"您確定要重新啟動嗎?\""
   },
   {
     "en": "\"Power Off\"",
@@ -229,10 +237,170 @@
   },
   {
     "en": "\"Are you sure you want to shutdown?\"",
-    "zh-TW": "\"您確定您要關機嗎?\""
+    "zh-TW": "\"您確定要關機嗎?\""
   },
   {
     "en": "\"Shutdown\"",
     "zh-TW": "\"關機\""
+  },
+  {
+    "en": "\"Now that you\\u2019re all set up, it\\u2019s important to understand the functionality and limitations of openpilot as alpha software before testing.\"",
+    "zh-TW": "\"現在您已經完全設定好了，在您開始測試 openpilot alpha 版之前，請您務必先了解到它的功能和限制。\""
+  },
+  {
+    "en": "\"Begin Training\"",
+    "zh-TW": "\"開始教學\""
+  },
+  {
+    "en": "\"openpilot is an advanced driver assistance system.\"",
+    "zh-TW": "\"openpilot 是進階版的駕駛輔助系統。\""
+  },
+  {
+    "en": "\"A driver assistance system is not a self driving car. This means openpilot is designed to work with you, not without you. Your attention is required to drive.\"",
+    "zh-TW": "\"駕駛輔助系統不是自動駕駛系統。這代表 openpilot 的設計是來輔助您而不是取代您。駕駛時，您仍然需要注意行車安全。\""
+  },
+  {
+    "en": "\"I will keep my eyes on the road.\"",
+    "zh-TW": "\"我的雙眼仍會盯著路況。\""
+  },
+  {
+    "en": "\"I will be ready to take over at any time.\"",
+    "zh-TW": "\"我會準備好隨時接管控制。\""
+  },
+  {
+    "en": "\"I will be ready to take over at any time!\"",
+    "zh-TW": "\"我一定會準備好隨時接管控制!\""
+  },
+  {
+    "en": "\"openpilot uses multiple sensors to see the road ahead.\"",
+    "zh-TW": "\"openpilot 使用多個傳感器來監看前方道路.\""
+  },
+  {
+    "en": "\"Before any signals are sent to control your car, sensors are fused to construct a scene of the road.\"",
+    "zh-TW": "\"在發送任何操控您車子的訊號之前，我們用這些傳感器來構建前方道路場景。\""
+  },
+  {
+    "en": "\"Camera from EON\"",
+    "zh-TW": "\"EON 的相機\""
+  },
+  {
+    "en": "\"Radar from your car\"",
+    "zh-TW": "\"來自您車上的雷達訊號\""
+  },
+  {
+    "en": "\"openpilot sensors\"",
+    "zh-TW": "\"openpilot 的傳感器\""
+  },
+  {
+    "en": "\"A vision algorithm leverages EON\\u2019s road-facing camera to determine the path to drive.\"",
+    "zh-TW": "\"我們利用後置相機補捉到的影像演算出行車的路徑。\""
+  },
+  {
+    "en": "\"The lane lines are drawn with varying widths to reflect the confidence in finding your lane.\"",
+    "zh-TW": "\"車道分隔線會依據我們判斷的精準度而有不同的粗細。\""
+  },
+  {
+    "en": "\"Select path to continue\"",
+    "zh-TW": "\"請點選畫面上的行車路徑繼續\""
+  },
+  {
+    "en": "\"The stock radar in your car helps openpilot measure the lead car distance for longitudinal control.\"",
+    "zh-TW": "\"來自您車上的原廠雷達訊號幫助 openpilot 計算出與前車的距離，這將用來提供縱向控制的功能。\""
+  },
+  {
+    "en": "\"The indicator is drawn either red or yellow to illustrate relative speed to the lead car.\"",
+    "zh-TW": "\"紅色或黃色的指標用來表示與前車之間的相對速度。\""
+  },
+  {
+    "en": "\"Select lead car indicator\"",
+    "zh-TW": "\"請點選畫面上的前車指標繼續\""
+  },
+  {
+    "en": "\"openpilot will start driving when cruise control is set.\"",
+    "zh-TW": "\"openpilot 將在定速系統啟用後開始運作。\""
+  },
+  {
+    "en": "\"Press cruise to engage and a pedal to disengage.\"",
+    "zh-TW": "\"按下定速鈕啟動，踩油門/剎車取消。\""
+  },
+  {
+    "en": "\"Engage openpilot\"",
+    "zh-TW": "\"啟用 openpilot\""
+  },
+  {
+    "en": "\"Driver Monitoring\"",
+    "zh-TW": "\"駕駛監控\""
+  },
+  {
+    "en": "\"Disengage openpilot\"",
+    "zh-TW": "\"取消 openpilot\""
+  },
+  {
+    "en": "\"openpilot controls\"",
+    "zh-TW": "\"openpilot 控制\""
+  },
+  {
+    "en": "'When you are ready to engage openpilot at a comfortable speed, locate the cruise controls on your steering wheel and press \"SET\" to begin.'",
+    "zh-TW": "'當您的車行駛在安全的速度時，您可以按下位於方向盤上的定速鈕 \"SET\" 開始使用 openpilot。'"
+  },
+  {
+    "en": "'Tap \"SET\" to engage'",
+    "zh-TW": "'請點選畫面上的 \"SET\" 繼續'"
+  },
+  {
+    "en": "\"When openpilot is engaged, you must always pay attention! openpilot monitors awareness with 3D facial reconstruction and pose. Distracted drivers are alerted, then disengaged from openpilot until corrected.\"",
+    "zh-TW": "\"當 openpilot 啟用中，請您務必隨時注意路況! openpilot 通過 3D 人臉/姿態識別來判斷駕駛的狀態。若是檢測到駕駛分心，openpilot 在警示完後取消。\""
+  },
+  {
+    "en": "\"Select face to continue\"",
+    "zh-TW": "\"請點選畫面上的人臉繼續\""
+  },
+  {
+    "en": "\"While openpilot is engaged, you may keep your hands on the wheel to override lateral controls. Longitudinal controls will be managed by openpilot until the gas or brake pedal is pressed to disengage.\"",
+    "zh-TW": "\"當 openpilot 啟用中，您可以隨時改以人工操控方向，縱向控制則𦁚續由 openpilot 控管直到踩下油門或剎車取消 openpilot 為止。\""
+  },
+  {
+    "en": "\"Tap a pedal to disengage\"",
+    "zh-TW": "\"請點選畫面上的油門/剎車繼續\""
+  },
+  {
+    "en": "\"Congratulations! You have completed openpilot training.\"",
+    "zh-TW": "\"恭喜您! 您已經完成了 openpilot 的使用指南。\""
+  },
+  {
+    "en": "\"This guide can be replayed at any time from the EON settings. To learn more about openpilot, read the wiki and join the community at discord.comma.ai\"",
+    "zh-TW": "\"若有需要，您可以隨時至 EON 設定裡重新閱讀使用指南。若您想知道更多關於 openpilot 的訊息，請參閱 wiki 或是加入我們位於 discord.comma.ai 的社群。\""
+  },
+  {
+    "en": "\"Finish Training\"",
+    "zh-TW": "\"完成教學\""
+  },
+  {
+    "en": "\"Restart\"",
+    "zh-TW": "\"重新開始\""
+  },
+  {
+    "en": "\"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday\"",
+    "zh-TW": "\"星期日_星期一_星期二_星期三_星期四_星期五_星期六\""
+  },
+  {
+    "en": "\"th\":1===t?\"st\":2===t?\"nd\":3===t?\"rd\":\"th\"",
+    "zh-TW": "\"號\":1===t?\"號\":2===t?\"號\":3===t?\"號\":\"號\""
+  },
+  {
+    "en": "\"January_February_March_April_May_June_July_August_September_October_November_December\"",
+    "zh-TW": "\"一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月\""
+  },
+  {
+    "en": "\"You are logged out.\"",
+    "zh-TW": "\"您已經登出。\""
+  },
+  {
+    "en": "\"Log in with Google\"",
+    "zh-TW": "\"使用 Google 帳號登入\""
+  },
+  {
+    "en": "\"Logged Out\"",
+    "zh-TW": "\"已登出\""
   }
 ]
