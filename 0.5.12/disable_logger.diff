@@ -1,4 +1,4 @@
-# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/disable_logger.diff | git apply -v
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/disable_logger.diff | git apply -v
 #
 # This patch disable logger entirely, suitable for users who do not wish to contribute data back to comma ai.
 # This will disable uploader, loggerd, logmessaged, logcatd, tombstoned, proclogd

@@ -1,4 +1,4 @@
-# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/auto_shutdown/shut_down_eon_after_60_mins_if_uploader_stop_processing.diff | git apply -v
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/auto_shutdown/shut_down_eon_after_60_mins_if_uploader_stop_processing.diff | git apply -v
 #
 # This patch adds a timer to uploader.py that allows your EON shutdown after 60 mins of inactivity (not uploading + not compressing),
 # to adjust shutdown time, change shutdown_at = 3600 value (60 secs * 60 mins = 3600 secs).

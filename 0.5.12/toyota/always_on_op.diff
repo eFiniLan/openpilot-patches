@@ -1,4 +1,4 @@
-# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.11/toyota/always_on_op.diff | git apply -v
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/toyota/always_on_op.diff | git apply -v
 #
 # (Suitable for Stock ACC)
 # This patch make your OP always on so users can have OP to control steering and gas and brake manually.
