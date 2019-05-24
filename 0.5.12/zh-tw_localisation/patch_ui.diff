@@ -1,4 +1,4 @@
-# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/patch_ui_for_chinese.diff | git apply -v
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/patch_ui.diff | git apply -v
 #
 # 這個補丁可以讓 ui.c 顯示中文
 # *** 注意: 請務必先安裝中文字型 ***
