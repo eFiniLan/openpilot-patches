@@ -4,7 +4,6 @@
 # curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/aio_installer.sh | bash
 #
 
-echo Start!
 # 加載成可讀寫模式
 mount -o remount,rw /system && \
 
