@@ -13,10 +13,10 @@ curl -o /system/fonts/Miui-Regular.ttf https://raw.githubusercontent.com/eFiniLa
 curl -o /system/fonts/Miui-Bold.ttf https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/chinese-font-installer/assets/Miui-Bold.ttf && \
 
 # 刪除 DroidSansFallback 字型 (舊版)
-rm -fr /system/fonts/DroidSansFallback*.ttf
+rm -fr /system/fonts/DroidSansFallback*.ttf && \
 
 # 設定字型權限
-chmod 644 /system/fonts/Miui-*
+chmod 644 /system/fonts/Miui-* && \
 
 # 下載+安裝字型設定檔 (DroidSansFallback 改成 小米蘭亭)
 curl -o /system/etc/fonts.xml https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/chinese-font-installer/assets/fonts.xml && \
