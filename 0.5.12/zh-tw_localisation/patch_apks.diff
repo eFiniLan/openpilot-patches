@@ -1,5 +1,7 @@
-# curl -o /data/system/ai.comma.plus.offroad.apk https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/ai.comma.plus.offroad.zh-tw.apk
+# curl -o /data/openpilot/apk/ai.comma.plus.offroad.apk https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/ai.comma.plus.offroad.zh-tw.apk
 #
 # 這個補丁將替代官方的 apk 成已中文化的apk
+# 因為它的 hash 有變化，所以每次重開機時都會安裝一次
+# 這將會延長所需開機時間
 # *** 注意: 請務必先安裝中文字型 ***
 #
