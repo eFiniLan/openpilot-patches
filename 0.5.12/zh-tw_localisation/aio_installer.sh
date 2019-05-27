@@ -36,4 +36,9 @@ curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/
 
 # 補丁 alerts.py
 curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/patch_alerts.diff | git apply -v
+
+# 更換 nanovg 裡的 stb libraries 到最新版 (2.22 & 1.21)
+curl -o /data/openpilot/phonelibs/nanovg/stb_image.h https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/stb_image.h && \
+curl -o /data/openpilot/phonelibs/nanovg/stb_truetype.h https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/stb_truetype.h && \
+
 echo Completed!
