@@ -27,7 +27,8 @@ chmod 644 /system/etc/fonts.xml && \
 setprop persist.sys.locale zh-TW && \
 
 # 補丁 ai.comma.plus.offroad
-curl -o /data/openpilot/apk/ai.comma.plus.offroad.apk https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/ai.comma.plus.offroad.zh-tw.apk && \
+curl -o /data/openpilot/apk/ai.comma.plus.offroad.apk https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/ai.comma.plus.offroad.apk && \
+curl -o /data/openpilot/apk/ai.comma.plus.frame.apk https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/zh-tw_localisation/ai.comma.plus.frame.apk && \
 
 cd /data/openpilot && \
 
