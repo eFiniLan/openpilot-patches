@@ -1,0 +1,89 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/ui_tweak/display_steering_angles.diff | git apply -v
+#
+# This patch display steering angles (real and desired) under the steering wheel icon
+#
+===================================================================
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
+@@ -162,6 +162,9 @@
+   bool gps_planner_active;
+ 
+   bool is_playing_alert;
++
++  float angleSteersDes;
++  float angleSteers;
+ } UIScene;
+ 
+ typedef struct {
+@@ -1425,6 +1428,53 @@
+   ui_draw_vision_event(s);
+ }
+ 
++static void ui_draw_steering_vals(UIState *s) {
++  const UIScene *scene = &s->scene;
++  char rel_steer[32];
++  char des_steer[32];
++
++  nvgFontFace(s->vg, "sans-regular");
++  nvgFontSize(s->vg, 48);
++  nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 50));
++
++  int start_x = vwp_w - 350;
++  int start_y = 300;
++
++  snprintf(rel_steer, sizeof(rel_steer), "%.1f", s->scene.angleSteers);
++  nvgFontFace(s->vg, "sans-regular");
++  nvgFontSize(s->vg, 48);
++  if (abs((int)s->scene.angleSteers) > 10) {
++    nvgFillColor(s->vg, nvgRGBA(255, 0, 0, 50));
++  } else {
++    nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 50));
++  }
++
++  nvgText(s->vg, start_x, start_y, rel_steer, NULL);
++
++  start_x += 80;
++  nvgFontFace(s->vg, "sans-regular");
++  nvgFontSize(s->vg, 48);
++  nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 50));
++  nvgText(s->vg, start_x, start_y, "[R]", NULL);
++
++  start_x += 80;
++  snprintf(des_steer, sizeof(des_steer), "%.1f", s->scene.angleSteersDes);
++  nvgFontFace(s->vg, "sans-regular");
++  nvgFontSize(s->vg, 48);
++  if (abs((int)s->scene.angleSteers) > 10) {
++    nvgFillColor(s->vg, nvgRGBA(255, 0, 0, 50));
++  } else {
++    nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 50));
++  }
++  nvgText(s->vg, start_x, start_y, des_steer, NULL);
++
++  start_x += 80;
++  nvgFontFace(s->vg, "sans-regular");
++  nvgFontSize(s->vg, 48);
++  nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 50));
++  nvgText(s->vg, start_x, start_y, "[D]", NULL);
++}
++
+ static void ui_draw_vision_footer(UIState *s) {
+   const UIScene *scene = &s->scene;
+   int ui_viz_rx = scene->ui_viz_rx;
+@@ -1435,6 +1485,7 @@
+ 
+   ui_draw_vision_face(s);
+   ui_draw_vision_map(s);
++  ui_draw_steering_vals(s);
+ }
+ 
+ static void ui_draw_vision_alert(UIState *s, int va_size, int va_color,
+@@ -1842,6 +1893,9 @@
+         s->scene.v_curvature = datad.vCurvature;
+         s->scene.decel_for_turn = datad.decelForTurn;
+ 
++        s->scene.angleSteers = datad.angleSteers;
++        s->scene.angleSteersDes = datad.angleSteersDes;
++
+         if (datad.alertSound.str && datad.alertSound.str[0] != '\0' && strcmp(s->alert_type, datad.alertType.str) != 0) {
+           char* error = NULL;
+           if (s->alert_sound[0] != '\0') {
