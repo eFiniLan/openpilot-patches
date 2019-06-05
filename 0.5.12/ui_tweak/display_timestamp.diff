@@ -1,0 +1,55 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/ui_tweak/display_timestamp.diff | git apply -v
+#
+# This patch display time stamp on ui
+#
+# courtesy of pjlao307 (https://github.com/pjlao307/)
+#
+===================================================================
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
+@@ -34,6 +34,7 @@
+
+ #include "cereal/gen/c/log.capnp.h"
+ #include "slplay.h"
++#include <time.h>
+
+ #define STATUS_STOPPED 0
+ #define STATUS_DISENGAGED 1
+@@ -1425,6 +1426,29 @@
+   ui_draw_vision_event(s);
+ }
+
++static void ui_draw_timestamp(UIState *s) {
++  int rect_w = 465;
++  int rect_h = 80;
++  int rect_x = (1920-rect_w)/2;
++  int rect_y = (1080-rect_h-50);
++
++  // Get local time to display
++  char now[50];
++  time_t t = time(NULL);
++  struct tm tm = *localtime(&t);
++  snprintf(now,sizeof(now),"%04d/%02d/%02d  %02d:%02d:%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
++
++  nvgBeginPath(s->vg);
++  nvgRoundedRect(s->vg, rect_x, rect_y, rect_w, rect_h, 15);
++  nvgFillColor(s->vg, nvgRGBA(0, 0, 0, 100));
++  nvgFill(s->vg);
++
++  nvgFontSize(s->vg, 60);
++  nvgFontFace(s->vg, "sans-semibold");
++  nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 50));
++  nvgText(s->vg,rect_x+231,rect_y+55,now,NULL);
++}
++
+ static void ui_draw_vision_footer(UIState *s) {
+   const UIScene *scene = &s->scene;
+   int ui_viz_rx = scene->ui_viz_rx;
+@@ -1435,6 +1459,7 @@
+
+   ui_draw_vision_face(s);
+   ui_draw_vision_map(s);
++  ui_draw_timestamp(s);
+ }
+
+ static void ui_draw_vision_alert(UIState *s, int va_size, int va_color,
