@@ -1,7 +1,7 @@
 # cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/toyota/for_stock_acc_only_does_not_disable_op_on_gas.diff | git apply -v
 #
 # (Suitable for Stock ACC)
-# This patch will disable OP disengagement when gas is pressed.
+# This patch will keep OP engaged when gas is pressed.
 #
 ===================================================================
 --- a/selfdrive/car/toyota/interface.py

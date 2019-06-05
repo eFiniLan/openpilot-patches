@@ -1,7 +1,7 @@
 # cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.12/toyota/for_stock_acc_only_does_not_disable_op_on_gas_or_brake.diff | git apply -v
 #
 # (Suitable for Stock ACC)
-# This patch will disable OP disengagement when gas or brake is pressed.
+# This patch will keep OP engaged when gas or brake is pressed.
 # When gas or brake is pressed by driver, OP will send 0 to gas AND brake
 # so it should not have any conflict between OP and user
 # (e.g. user wants accelerate but OP wants brake)
