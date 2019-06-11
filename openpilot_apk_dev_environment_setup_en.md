@@ -83,18 +83,18 @@ cd cereal/
 make
 cd ..
 ```
-# Create frame apk
+# Build frame apk
 ```bash
 git clone https://github.com/commaai/openpilot-apks.git
 cd openpilot-apks/frame
 # fix your symbolic link
-rm -fr openpilot-apks/frame/app/src/main/java/ai/comma/openpilot/cereal
-ln -sf <your_openpilot_director>/cereal/gen/java openpilot-apks/frame/app/src/main/java/ai/comma/openpilot/cereal
+rm -fr app/src/main/java/ai/comma/openpilot/cereal
+ln -sf <your_openpilot_director>/cereal/gen/java app/src/main/java/ai/comma/openpilot/cereal
 ./build.sh
 scp -P 8022 -i ~/.ssh/openpilot_rsa out.apk root@<EON_IP>:/data/openpilot/apk/ai.comma.plus.frame.apk
 cd ..
 ```
-# Create offroad apk
+# Build offroad apk
 ```bash
 cd offroad
 yarn
@@ -104,7 +104,7 @@ node_modules/.bin/react-native link
 scp -P 8022 -i ~/.ssh/openpilot_rsa ai.comma.plus.offroad.apk root@<EON_IP>:/data/openpilot/apk/ai.comma.plus.offroad.apk
 cd ..
 ```
-# Create black apk
+# Build black apk
 ```bash
 cd black
 ./build.sh
