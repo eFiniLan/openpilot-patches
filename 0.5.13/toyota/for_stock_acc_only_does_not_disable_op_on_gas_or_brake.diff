@@ -1,0 +1,43 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.13/toyota/for_stock_acc_only_does_not_disable_op_on_gas_or_brake.diff | git apply -v
+#
+# (Suitable for Stock ACC)
+# This patch will keep OP engaged when gas or brake is pressed.
+# When gas or brake is pressed by driver, OP will send 0 to gas AND brake
+# so it should not have any conflict between OP and user
+# (e.g. user wants accelerate but OP wants brake)
+#
+===================================================================
+--- a/selfdrive/car/toyota/interface.py
++++ b/selfdrive/car/toyota/interface.py
+@@ -383,12 +383,12 @@
+       events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
+
+     # disable on pedals rising edge or when brake is pressed and speed isn't zero
+-    if (ret.gasPressed and not self.gas_pressed_prev) or \
+-       (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
+-      events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
+-
+-    if ret.gasPressed:
+-      events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
++    # if (ret.gasPressed and not self.gas_pressed_prev) or \
++    #    (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
++    #   events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
++    #
++    # if ret.gasPressed:
++    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+
+     ret.events = events
+     ret.canMonoTimes = canMonoTimes
+===================================================================
+--- a/selfdrive/car/toyota/carcontroller.py
++++ b/selfdrive/car/toyota/carcontroller.py
+@@ -219,6 +219,9 @@
+     # accel cmd comes from DSU, but we can spam can to cancel the system even if we are using lat only control
+     if (frame % 3 == 0 and ECU.DSU in self.fake_ecus) or (pcm_cancel_cmd and ECU.CAM in self.fake_ecus):
+       lead = lead or CS.v_ego < 12.    # at low speed we always assume the lead is present do ACC can be engaged
++      # send 0 to accel command when brake/gas is pressed
++      if CS.brake_pressed > 0 or CS.car_gas > 0 or CS.gas_pressed:
++        apply_accel = 0
+       if ECU.DSU in self.fake_ecus:
+         can_sends.append(create_accel_command(self.packer, apply_accel, pcm_cancel_cmd, self.standstill_req, lead))
+       else:

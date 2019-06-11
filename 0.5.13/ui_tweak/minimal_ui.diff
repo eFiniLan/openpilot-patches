@@ -1,0 +1,151 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.13/ui_tweak/minimal_ui.diff | git apply -v
+#
+# This patch modify ui to be as minimal as possible
+# it will add a few extra info in addition:
+# * timestamp
+# * desired steering angle
+# * actual steering angle
+# * distance to lead car
+#
+===================================================================
+--- a/selfdrive/ui/ui.c
++++ b/selfdrive/ui/ui.c
+@@ -35,6 +35,7 @@
+
+ #include "cereal/gen/c/log.capnp.h"
+ #include "slplay.h"
++#include <time.h>
+
+ #define STATUS_STOPPED 0
+ #define STATUS_DISENGAGED 1
+@@ -164,6 +165,9 @@ typedef struct UIScene {
+   bool gps_planner_active;
+
+   bool is_playing_alert;
++
++  float angleSteersDes;
++  float angleSteers;
+ } UIScene;
+
+ typedef struct {
+@@ -1278,11 +1282,11 @@ static void ui_draw_vision_speed(UIState *s) {
+   nvgFontSize(s->vg, 36*2.5);
+   nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 200));
+
+-  if (s->is_metric) {
+-    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 320, "kph", NULL);
+-  } else {
+-    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 320, "mph", NULL);
+-  }
++//  if (s->is_metric) {
++//    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 320, "kph", NULL);
++//  } else {
++//    nvgText(s->vg, viz_speed_x+viz_speed_w/2, 320, "mph", NULL);
++//  }
+ }
+
+ static void ui_draw_vision_event(UIState *s) {
+@@ -1405,13 +1409,76 @@ static void ui_draw_vision_header(UIState *s) {
+   nvgRect(s->vg, ui_viz_rx, box_y, ui_viz_rw, header_h);
+   nvgFill(s->vg);
+
+-  ui_draw_vision_maxspeed(s);
++//  ui_draw_vision_maxspeed(s);
+
+ #ifdef SHOW_SPEEDLIMIT
+   ui_draw_vision_speedlimit(s);
+ #endif
+   ui_draw_vision_speed(s);
+-  ui_draw_vision_event(s);
++//  ui_draw_vision_event(s);
++}
++
++static void ui_draw_infobar(UIState *s) {
++  // timestamp from pjlao307 dashcam (https://github.com/pjlao307)
++  int rect_w = 1440; // 1920 * 0.75
++  int rect_h = 50;
++  int rect_x = (1920-rect_w)/2;
++  int rect_y = (1080-rect_h-50);
++  int sidebar_offset = 0;
++  bool hasSidebar = !s->scene.uilayout_sidebarcollapsed;
++  if (hasSidebar) {
++    sidebar_offset = 100;
++  }
++
++
++  // Get local time to display
++  char infobar[68];
++  time_t t = time(NULL);
++  struct tm tm = *localtime(&t);
++
++  char rel_steer[9];
++  snprintf(rel_steer, sizeof(rel_steer), "%s%05.1f°", s->scene.angleSteers < 0? "-" : "+", fabs(s->scene.angleSteers));
++
++  char des_steer[9];
++  if (s->scene.engaged) {
++    snprintf(des_steer, sizeof(des_steer), "%s%05.1f°", s->scene.angleSteersDes < 0? "-" : "+", fabs(s->scene.angleSteersDes));
++  } else {
++    snprintf(des_steer, sizeof(des_steer), "%6s", "N/A");
++  }
++
++
++  char lead_dist[8];
++  if (s->scene.lead_status) {
++    snprintf(lead_dist, sizeof(lead_dist), "%06.2fm", s->scene.lead_d_rel);
++  } else {
++    snprintf(lead_dist, sizeof(lead_dist), "%6s", "N/A");
++  }
++
++
++  snprintf(
++    infobar,
++    sizeof(infobar),
++    "%04d/%02d/%02d %02d:%02d:%02d | REL: %s | DES: %s | DIST: %s",
++    tm.tm_year + 1900,
++    tm.tm_mon + 1,
++    tm.tm_mday,
++    tm.tm_hour,
++    tm.tm_min,
++    tm.tm_sec,
++    rel_steer,
++    des_steer,
++    lead_dist
++  );
++
++  nvgBeginPath(s->vg);
++  nvgRoundedRect(s->vg, rect_x + sidebar_offset, rect_y, rect_w, rect_h, 15);
++  nvgFillColor(s->vg, nvgRGBA(0, 0, 0, 100));
++  nvgFill(s->vg);
++
++  nvgFontSize(s->vg, 40);
++  nvgFontFace(s->vg, "courbd");
++  nvgFillColor(s->vg, nvgRGBA(255, 255, 255, 175));
++  nvgText(s->vg, rect_x + 720 + sidebar_offset, rect_y + 35, infobar, NULL);
+ }
+
+ static void ui_draw_vision_footer(UIState *s) {
+@@ -1422,11 +1489,12 @@ static void ui_draw_vision_footer(UIState *s) {
+   nvgBeginPath(s->vg);
+   nvgRect(s->vg, ui_viz_rx, footer_y, ui_viz_rw, footer_h);
+
+-  ui_draw_vision_face(s);
++//  ui_draw_vision_face(s);
+
+ #ifdef SHOW_SPEEDLIMIT
+   ui_draw_vision_map(s);
+ #endif
++  ui_draw_infobar(s);
+ }
+
+ static void ui_draw_vision_alert(UIState *s, int va_size, int va_color,
+@@ -1843,6 +1911,9 @@ static void ui_update(UIState *s) {
+         s->scene.v_curvature = datad.vCurvature;
+         s->scene.decel_for_turn = datad.decelForTurn;
+
++        s->scene.angleSteers = datad.angleSteers;
++        s->scene.angleSteersDes = datad.angleSteersDes;
++
+         if (datad.alertSound.str && datad.alertSound.str[0] != '\0' && strcmp(s->alert_type, datad.alertType.str) != 0) {
+           char* error = NULL;
+           if (s->alert_sound[0] != '\0') {
+

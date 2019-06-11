@@ -1,0 +1,19 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.13/toyota/do_not_send_alert_when_enable_disable_op.diff | git apply -v
+#
+# This patch will disable OP sending alerts to car if you enable/disable OP
+#
+===================================================================
+--- a/selfdrive/car/toyota/carcontroller.py
++++ b/selfdrive/car/toyota/carcontroller.py
+@@ -69,8 +69,9 @@
+   if audible_alert == AudibleAlert.chimeWarningRepeat:
+     sound1 = 1
+   elif audible_alert != AudibleAlert.none:
+-    # TODO: find a way to send single chimes
+-    sound2 = 1
++    if audible_alert not in [AudibleAlert.chimeEngage, AudibleAlert.chimeDisengage]:
++      # TODO: find a way to send single chimes
++      sound2 = 1
+ 
+   return steer, fcw, sound1, sound2
+ 

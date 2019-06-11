@@ -1,0 +1,16 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.13/toyota/reduce_op_start_up_delay_to_600_ms.diff | git apply -v
+#
+# This patch will reduce OP start up delay to 600 ms (was 1 second).
+#
+===================================================================
+--- a/selfdrive/car/car_helpers.py
++++ b/selfdrive/car/car_helpers.py
+@@ -110,7 +110,7 @@
+     # message has elapsed, exit. Toyota needs higher time_fingerprint, since DSU does not
+     # broadcast immediately
+     if len(candidate_cars) == 1 and can_seen_ts is not None:
+-      time_fingerprint = 1.0 if ("TOYOTA" in candidate_cars[0] or "LEXUS" in candidate_cars[0]) else 0.1
++      time_fingerprint = 0.6 if ("TOYOTA" in candidate_cars[0] or "LEXUS" in candidate_cars[0]) else 0.1
+       if (ts - can_seen_ts) > time_fingerprint:
+         break
+ 

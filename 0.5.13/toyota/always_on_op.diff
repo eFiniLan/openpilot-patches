@@ -1,0 +1,110 @@
+# cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.13/toyota/always_on_op.diff | git apply -v
+#
+# (Suitable for Stock ACC)
+# This patch make your OP always on so users can have OP to control steering but control gas and brake manually (or with ACC)
+# 1. Disable safety check in safety_toyota.h
+# 2. Use generic toggle as OP switch
+#
+# ** This will require panda re-flash **
+# cd /data/openpilot/panda && pkill -f boardd && PYTHONPATH=.. python -c "from panda import Panda; Panda().flash()" && PYTHONPATH=.. python -c "from panda import Panda; Panda().flash()"
+#
+===================================================================
+--- a/selfdrive/car/toyota/carstate.py
++++ b/selfdrive/car/toyota/carstate.py
+@@ -170,3 +170,12 @@
+       self.generic_toggle = cp.vl["AUTOPARK_STATUS"]['STATE'] != 0
+     else:
+       self.generic_toggle = bool(cp.vl["LIGHT_STALK"]['AUTO_HIGH_BEAM'])
++
++    if self.generic_toggle and self.main_on:
++      self.pcm_acc_active = True
++      if self.standstill:
++        # self.pcm_acc_active = False
++        self.pcm_acc_status = 7
++      else:
++        # self.pcm_acc_active = True
++        self.pcm_acc_status = 1
+===================================================================
+--- a/selfdrive/car/toyota/interface.py
++++ b/selfdrive/car/toyota/interface.py
+@@ -380,12 +380,12 @@
+       events.append(create_event('pcmDisable', [ET.USER_DISABLE]))
+
+     # disable on pedals rising edge or when brake is pressed and speed isn't zero
+-    if (ret.gasPressed and not self.gas_pressed_prev) or \
+-       (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
+-      events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
+-
+-    if ret.gasPressed:
+-      events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
++    # if (ret.gasPressed and not self.gas_pressed_prev) or \
++    #    (ret.brakePressed and (not self.brake_pressed_prev or ret.vEgo > 0.001)):
++    #   events.append(create_event('pedalPressed', [ET.NO_ENTRY, ET.USER_DISABLE]))
++    #
++    # if ret.gasPressed:
++    #   events.append(create_event('pedalPressed', [ET.PRE_ENABLE]))
+
+     ret.events = events
+     ret.canMonoTimes = canMonoTimes
+===================================================================
+--- a/panda/board/safety/safety_toyota.h
++++ b/panda/board/safety/safety_toyota.h
+@@ -50,32 +50,33 @@
+   }
+
+   // enter controls on rising edge of ACC, exit controls on ACC off
+-  if ((to_push->RIR>>21) == 0x1D2) {
+-    // 5th bit is CRUISE_ACTIVE
+-    int cruise_engaged = to_push->RDLR & 0x20;
+-    // 4th bit is GAS_RELEASED
+-    int gas = !(to_push->RDLR & 0x10);
+-    if (!cruise_engaged ||
+-        (gas && !toyota_gas_prev && !gas_interceptor_detected && long_controls_allowed)) {
+-      controls_allowed = 0;
+-    } else if (cruise_engaged && !toyota_cruise_engaged_last) {
+-      controls_allowed = 1;
+-    }
+-    toyota_cruise_engaged_last = cruise_engaged;
+-    toyota_gas_prev = gas;
+-  }
++//  if ((to_push->RIR>>21) == 0x1D2) {
++//    // 5th bit is CRUISE_ACTIVE
++//    int cruise_engaged = to_push->RDLR & 0x20;
++//    // 4th bit is GAS_RELEASED
++//    int gas = !(to_push->RDLR & 0x10);
++//    if (!cruise_engaged ||
++//        (gas && !toyota_gas_prev && !gas_interceptor_detected && long_controls_allowed)) {
++//      controls_allowed = 0;
++//    } else if (cruise_engaged && !toyota_cruise_engaged_last) {
++//      controls_allowed = 1;
++//    }
++//    toyota_cruise_engaged_last = cruise_engaged;
++//    toyota_gas_prev = gas;
++//  }
+
+-  // exit controls on rising edge of gas press if interceptor (0x201)
+-  if ((to_push->RIR>>21) == 0x201) {
+-    gas_interceptor_detected = 1;
+-    int gas_interceptor = ((to_push->RDLR & 0xFF) << 8) | ((to_push->RDLR & 0xFF00) >> 8);
+-    if ((gas_interceptor > TOYOTA_GAS_INTERCEPTOR_THRESHOLD) &&
+-        (gas_interceptor_prev <= TOYOTA_GAS_INTERCEPTOR_THRESHOLD) &&
+-        long_controls_allowed) {
+-      controls_allowed = 0;
+-    }
+-    gas_interceptor_prev = gas_interceptor;
+-  }
++//  // exit controls on rising edge of gas press if interceptor (0x201)
++//  if ((to_push->RIR>>21) == 0x201) {
++//    gas_interceptor_detected = 1;
++//    int gas_interceptor = ((to_push->RDLR & 0xFF) << 8) | ((to_push->RDLR & 0xFF00) >> 8);
++//    if ((gas_interceptor > TOYOTA_GAS_INTERCEPTOR_THRESHOLD) &&
++//        (gas_interceptor_prev <= TOYOTA_GAS_INTERCEPTOR_THRESHOLD) &&
++//        long_controls_allowed) {
++//      controls_allowed = 0;
++//    }
++//    gas_interceptor_prev = gas_interceptor;
++//  }
++  controls_allowed = 1
+
+   int bus = (to_push->RDTR >> 4) & 0xF;
+   // msgs are only on bus 2 if panda is connected to frc

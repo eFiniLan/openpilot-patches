@@ -1,0 +1,30 @@
+# curl -o /data/openpilot/selfdrive/dashcamd.py https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.13/dashcam/dashcamd.py && cd /data/openpilot && curl https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/0.5.13/dashcam/dashcam.diff | git apply -v
+#
+# This patch add a always on dashcam, it will record whatever on
+# the screen while driving
+# Apply minimal_ui patch if you would like your video to have timestamp
+# on it.
+#
+# courtesy of pjlao307 (https://github.com/pjlao307/)
+# this is just a always on version of his original implementation
+# and integrated into openpilot service
+#
+===================================================================
+--- a/selfdrive/manager.py
++++ b/selfdrive/manager.py
+@@ -109,6 +109,7 @@
+   "gpsd": ("selfdrive/sensord", ["./gpsd"]),
+   "updated": "selfdrive.updated",
+   "athena": "selfdrive.athena.athenad",
++  "dashcamd": "selfdrive.dashcamd",
+ }
+ android_packages = ("ai.comma.plus.offroad", "ai.comma.plus.frame")
+ 
+@@ -147,6 +148,7 @@
+   'proclogd',
+   'ubloxd',
+   'mapd',
++  'dashcamd'
+ ]
+ 
+ def register_managed_process(name, desc, car_started=False):
