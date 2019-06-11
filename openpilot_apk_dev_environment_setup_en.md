@@ -64,7 +64,7 @@ cd ..
 
 # capnproto-java
 git clone https://github.com/capnproto/capnproto-java
-# (Edit Makefile, Replace "CXX_FLAGS=-std=c++11 $(CAPNP_CXX_FLAGS)" With "CXX_FLAGS=-std=c++14 $(CAPNP_CXX_FLAGS)")
+sed -i "s/c++11/c++14/" Makefile
 make
 sudo cp capnpc-java /usr/local/bin/
 cd ..
