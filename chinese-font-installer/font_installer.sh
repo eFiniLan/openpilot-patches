@@ -19,8 +19,9 @@ if ls /system/fonts/DroidSansFallback*.ttf 1> /dev/null 2>&1; then
 fi
 
 if [[ $update_font_conf -eq "1" ]]; then
-    mount -o remount,rw /system && curl -o /system/etc/fonts.xml https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/chinese-font-installer/assets/fonts.xml
+    curl -o /system/etc/fonts.xml https://raw.githubusercontent.com/eFiniLan/openpilot-patches/master/chinese-font-installer/assets/fonts.xml
     chmod 644 /system/etc/fonts.xml
+    mount -o remount,r /system
 fi
 
 setprop persist.sys.locale $lang
