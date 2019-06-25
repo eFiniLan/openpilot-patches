@@ -10,18 +10,28 @@
 import os
 import time
 import datetime
+import zmq
+import selfdrive.messaging as messaging
+from selfdrive.services import service_list
 
 dashcam_videos = '/sdcard/dashcam/'
-duration = 180 # max is 180
+duration = 60 # max is 180
 bit_rates = 2560000 # max is 4000000
-max_size_per_file = bit_rates/8*duration # 2.56Mbps / 8 * 180 = 57.6MB per 180 seconds
+max_size_per_file = bit_rates/8*duration # 2.56Mbps / 8 * 60 = 12.3MB per 60 seconds
 max_storage = max_size_per_file/duration*1024*1024*60*60*6 # 6 hours worth of footage (around 6.5gb)
+freespace_limit = 0.15 # we start cleaning up footage when freespace is below 10%
 
 def dashcamd_thread():
   if not os.path.exists(dashcam_videos):
     os.makedirs(dashcam_videos)
 
+  context = zmq.Context()
+  thermal_sock = messaging.sub_sock(context, service_list['thermal'].port)
+
   while 1:
+    # get health of board, log this in "thermal"
+    msg = messaging.recv_sock(thermal_sock, wait=True)
+
     now = datetime.datetime.now()
     file_name = now.strftime("%Y-%m-%d_%H-%M-%S")
     os.system("screenrecord --bit-rate %s --time-limit %s %s%s.mp4 &" % (bit_rates, duration, dashcam_videos, file_name))
@@ -31,12 +41,14 @@ def dashcamd_thread():
 
     # we should clean up files here if use too much spaces
     # when used spaces greater than max available storage
-    if used_spaces >= max_storage:
+    # or when free space is less than 10%
+    if used_spaces >= max_storage or msg.thermal.freeSpace < freespace_limit:
       # get all the files in the dashcam_videos path
       files = [f for f in sorted(os.listdir(dashcam_videos)) if os.path.isfile(dashcam_videos + f)]
       for file in files:
+        msg = messaging.recv_sock(thermal_sock, wait=True)
         # delete file one by one and once it has enough space for 1 video, we stop deleting
-        if used_spaces - last_used_spaces < max_size_per_file:
+        if used_spaces - last_used_spaces < max_size_per_file or msg.thermal.freeSpace < freespace_limit:
           os.system("rm -fr %s" % (dashcam_videos + file))
           last_used_spaces = get_used_spaces()
         else:
