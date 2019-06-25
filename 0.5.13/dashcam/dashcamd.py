@@ -17,8 +17,8 @@ from selfdrive.services import service_list
 dashcam_videos = '/sdcard/dashcam/'
 duration = 60 # max is 180
 bit_rates = 2560000 # max is 4000000
-max_size_per_file = bit_rates/8*duration # 2.56Mbps / 8 * 60 = 12.3MB per 60 seconds
-max_storage = max_size_per_file/duration*1024*1024*60*60*6 # 6 hours worth of footage (around 6.5gb)
+max_size_per_file = bit_rates/8*duration # 2.56Mbps / 8 * 60 = 19.2MB per 60 seconds
+max_storage = max_size_per_file/duration*60*60*6 # 6 hours worth of footage (around 7gb)
 freespace_limit = 0.15 # we start cleaning up footage when freespace is below 10%
 
 def dashcamd_thread():
